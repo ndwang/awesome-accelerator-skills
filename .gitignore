@@ -1,0 +1,27 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Bmad artifacts
+*.digested
+
+# Claude Code
+.claude/
+
+# Large binary docs (keep .tex source, ignore generated)
+docs/
+pytao/
