@@ -146,9 +146,3 @@ skills. Copy the contents of the `skills/` directory into whatever path your too
 `SKILL.md` files. Consult your tool's documentation for the exact location.
 
 </details>
-
-## Source Documentation
-
-The `docs/` directory contains the original Bmad LaTeX documentation used to generate these
-skills. The skills cover Parts I (Language Reference) and II (Conventions and Physics) of the
-Bmad manual.

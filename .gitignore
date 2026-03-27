@@ -16,11 +16,11 @@ __pycache__/
 *.pyo
 .env
 
-# Bmad artifacts
+# Bmad
 *.digested
 
 # Claude Code
 .claude/
 
-# Large binary docs (keep .tex source, ignore generated)
+# docs
 docs/
