@@ -1,9 +1,9 @@
 # Awesome Accelerator Skills
 
-AI agent skills for the [Bmad](https://www.classe.cornell.edu/bmad) accelerator simulation
-toolkit and the [Tao](https://www.classe.cornell.edu/bmad/tao.html) program. The skills are
-plain markdown files organized with progressive disclosure -- a concise main file plus detailed
-reference files loaded on demand. This makes them portable across agent harnesses.
+Agent skills for the [Bmad](https://www.classe.cornell.edu/bmad) accelerator simulation
+toolkit and the [Tao](https://www.classe.cornell.edu/bmad/tao.html) program. Compatible with
+Claude Code, OpenAI Codex, VS Code / GitHub Copilot, OpenClaw, Google Antigravity, and any
+tool that supports the open Agent Skills standard.
 
 ## What's Included
 
@@ -21,141 +21,128 @@ Write, read, and understand Bmad lattice files for charged particle and X-ray si
 Operate Tao for accelerator optics simulation, optimization, and analysis.
 
 - **SKILL.md** (396 lines) -- Commands, concepts, workflows
-- **references/** -- 9 reference files covering commands, initialization, data, variables,
-  optimization, plotting, pipe interface, and single-mode operation
+- **references/commands-reference.md** -- Full command reference with syntax and examples
+- **references/concepts-and-syntax.md** -- Universes, branches, element addressing, expressions
+- **references/initialization.md** -- Startup files, command-line options, lattice loading
+- **references/data.md** -- Datum types, d1/d2 arrays, data sources
+- **references/variables.md** -- Variable definitions, v1 arrays, attribute linking
+- **references/optimization-and-wave.md** -- Optimizers, merit function, wave analysis
+- **references/plotting.md** -- Plot setup, templates, graph and curve customization
+- **references/pipe-interface.md** -- External-process communication via the pipe protocol
+- **references/single-mode.md** -- Non-interactive single-command operation
 
 ## Installation
 
-### Claude Code
+These skills follow the open [Agent Skills](https://agentskills.io/home) standard
+and work with any compatible harness. Pick the section that matches your tool.
 
-**As a plugin** (recommended for sharing):
+<details>
+<summary><strong>Claude Code</strong></summary>
+
+**As a plugin** (recommended — keeps skills out of your project tree):
 ```bash
-claude --plugin-dir /path/to/awesome-accelerator-skills
+claude --plugin-dir /path/to/bmad_skills
 ```
 
-**As project-level skills** (shared via git):
+**Project-level** (committed to version control, shared with collaborators):
 ```bash
-cp -r skills/bmad /path/to/project/.claude/skills/
-cp -r skills/tao /path/to/project/.claude/skills/
+cp -r skills/* /path/to/project/.claude/skills/
 ```
 
-**As personal skills** (all your projects):
+**Personal** (available in every project on your machine):
 ```bash
-cp -r skills/bmad ~/.claude/skills/
-cp -r skills/tao ~/.claude/skills/
+cp -r skills/* ~/.claude/skills/
 ```
 
-Claude Code automatically loads SKILL.md when the skill triggers and reads reference files
-on demand via the pointers in SKILL.md.
+</details>
 
-### Cursor
+<details>
+<summary><strong>OpenAI Codex</strong></summary>
 
-Add the SKILL.md files as project rules. In your project root:
+Codex scans `.agents/skills/` in your repo (project) and `~/.codex/skills/` (personal).
 
+**Project-level:**
 ```bash
-mkdir -p .cursor/rules
-cp skills/bmad/SKILL.md .cursor/rules/bmad.md
-cp skills/tao/SKILL.md .cursor/rules/tao.md
+cp -r skills/* /path/to/project/.agents/skills/
 ```
 
-For reference files, either append them to the rule files or instruct Cursor to read them
-from the `skills/` directory when needed. You can also add them as documentation context
-in `.cursor/rules/` with filenames that indicate when to load them.
-
-### Windsurf
-
-Place the SKILL.md files in your project's `.windsurfrules` or global rules:
-
+**Personal:**
 ```bash
-# Project-level
-cp skills/bmad/SKILL.md .windsurfrules/bmad.md
-cp skills/tao/SKILL.md .windsurfrules/tao.md
+cp -r skills/* ~/.codex/skills/
 ```
 
-Reference files can live in the repo; Windsurf's Cascade will read them when directed
-by the pointers in the main skill files.
+Codex detects new skills automatically. If one doesn't appear, restart Codex.
 
-### Cline / Roo Code
+</details>
 
-Add SKILL.md content to `.clinerules` or custom instructions:
+<details>
+<summary><strong>VS Code / GitHub Copilot</strong></summary>
 
+Copilot discovers skills in `.github/skills/` (project) and `~/.copilot/skills/` (personal).
+
+**Project-level:**
 ```bash
-cp skills/bmad/SKILL.md .clinerules/bmad.md
-cp skills/tao/SKILL.md .clinerules/tao.md
+cp -r skills/* /path/to/project/.github/skills/
 ```
 
-Place the `skills/` directory in the project root so the agent can read reference files
-when the SKILL.md pointers direct it to.
-
-### OpenAI Codex CLI
-
-Use SKILL.md as a project-level instruction file:
-
+**Personal:**
 ```bash
-# Copy into the project's instructions directory
-cp skills/bmad/SKILL.md codex-instructions/bmad.md
-cp skills/tao/SKILL.md codex-instructions/tao.md
+cp -r skills/* ~/.copilot/skills/
 ```
 
-Reference as custom instructions via `AGENTS.md` or the `--instructions` flag. The agent
-can read reference files from the repo when needed.
+Skills also work with the Copilot CLI and Copilot coding agent.
 
-### ChatGPT / Custom GPTs
+</details>
 
-Paste the contents of SKILL.md into the system instructions (Custom Instructions or GPT
-configuration). For reference files, upload them as knowledge files -- ChatGPT will
-retrieve relevant sections automatically.
+<details>
+<summary><strong>OpenClaw</strong></summary>
 
-### LangChain / LlamaIndex / Custom RAG
+OpenClaw loads skills from `<workspace>/skills/` (per-agent), `~/.openclaw/skills/` (shared
+across agents), or extra directories configured via `skills.load.extraDirs` in
+`~/.openclaw/openclaw.json`.
 
-Use the skill files as retrieval documents:
-
-```python
-# Load all skill content as documents
-from pathlib import Path
-
-docs = []
-for md_file in Path("skills").rglob("*.md"):
-    docs.append({
-        "content": md_file.read_text(),
-        "metadata": {"source": str(md_file)}
-    })
-# Index with your vector store of choice
+**Workspace (per-agent):**
+```bash
+cp -r skills/* /path/to/workspace/skills/
 ```
 
-For simpler setups, include SKILL.md directly in the system prompt and load reference
-files into a retrieval tool the agent can query.
-
-### Raw API Calls (Anthropic, OpenAI, etc.)
-
-Include SKILL.md in the system message. Provide reference files either by appending them
-when the context is relevant, or by making them available as tool results:
-
-```python
-system_prompt = Path("skills/bmad/SKILL.md").read_text()
-# Strip the YAML frontmatter (lines between --- markers) if the API doesn't use it
+**Shared (all agents on this machine):**
+```bash
+cp -r skills/* ~/.openclaw/skills/
 ```
 
-### General Guidance
+OpenClaw watches skill folders and picks up changes on the next agent turn.
 
-The skill files are plain markdown. To use them with any agent:
+</details>
 
-1. **Load SKILL.md into the system prompt or instructions** -- this gives the agent
-   working knowledge of Bmad/Tao (~400-450 lines each)
-2. **Make reference files accessible** -- either in the prompt, as retrievable documents,
-   or as files the agent can read on demand
-3. **The YAML frontmatter** (`name`, `description`) is Claude Code-specific metadata for
-   triggering. Other harnesses can ignore it or strip it
-4. **The "When to Load" pointers** in SKILL.md tell any agent when to consult each
-   reference file -- this progressive disclosure pattern works across harnesses
+<details>
+<summary><strong>Google Antigravity</strong></summary>
+
+Antigravity uses `.agent/skills/` (workspace) and `~/.gemini/antigravity/skills/` (global).
+
+**Workspace:**
+```bash
+cp -r skills/* /path/to/workspace/.agent/skills/
+```
+
+**Global:**
+```bash
+cp -r skills/* ~/.gemini/antigravity/skills/
+```
+
+</details>
+
+<details>
+<summary><strong>Other Agent-Skills-compatible tools</strong></summary>
+
+Any tool that implements the Agent Skills standard (Cursor, Gemini CLI, etc.) can use these
+skills. Copy the contents of the `skills/` directory into whatever path your tool scans for
+`SKILL.md` files. Consult your tool's documentation for the exact location.
+
+</details>
 
 ## Source Documentation
 
 The `docs/` directory contains the original Bmad LaTeX documentation used to generate these
 skills. The skills cover Parts I (Language Reference) and II (Conventions and Physics) of the
 Bmad manual.
-
-## License
-
-The Bmad documentation is maintained by the Cornell Laboratory for Accelerator-based Sciences
-and Education (CLASSE). See `docs/bmad/Copyright` for details.

@@ -24,4 +24,3 @@ __pycache__/
 
 # Large binary docs (keep .tex source, ignore generated)
 docs/
-pytao/
