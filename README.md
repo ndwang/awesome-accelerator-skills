@@ -1,7 +1,7 @@
 # Awesome Accelerator Skills
 
 Agent skills for the [Bmad](https://www.classe.cornell.edu/bmad) accelerator simulation
-toolkit and the [Tao](https://www.classe.cornell.edu/bmad/tao.html) program. Compatible with
+toolkit, the [Tao](https://www.classe.cornell.edu/bmad/tao.html) program, and [PyTao](https://bmad-sim.github.io/pytao/) (the Python interface to Tao). Compatible with
 Claude Code, OpenAI Codex, VS Code / GitHub Copilot, OpenClaw, Google Antigravity, and any
 tool that supports the open Agent Skills standard.
 
@@ -30,6 +30,12 @@ Operate Tao for accelerator optics simulation, optimization, and analysis.
 - **references/plotting.md** -- Plot setup, templates, graph and curve customization
 - **references/pipe-interface.md** -- External-process communication via the pipe protocol
 - **references/single-mode.md** -- Non-interactive single-command operation
+
+### PyTao Skill
+Script Tao from Python using pytao, the Python interface to Tao/Bmad.
+
+- **SKILL.md** (262 lines) -- Initialization, API layers, data models, common patterns
+- **references/api-reference.md** -- Method signatures, parameters, and return types
 
 ## Installation
 
