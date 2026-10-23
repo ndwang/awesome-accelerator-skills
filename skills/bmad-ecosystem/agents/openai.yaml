@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bmad, Tao, and PyTao"
+  short_description: "Build and diagnose Bmad, Tao, and PyTao workflows"
+  default_prompt: "Use $bmad-ecosystem to build, run, and verify an accelerator lattice with Tao and PyTao."

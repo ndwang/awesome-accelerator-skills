@@ -1,0 +1,19 @@
+! SPDX-License-Identifier: GPL-3.0-only
+! Open FODO transport line. Reference momentum P0*c = 1 GeV.
+! These initial Twiss values are specified inputs, not a periodic solution.
+parameter[geometry] = open
+parameter[particle] = electron
+parameter[p0c] = 1e9
+
+beginning[beta_a] = 10
+beginning[alpha_a] = 0
+beginning[beta_b] = 10
+beginning[alpha_b] = 0
+
+D_HALF: drift, l = 0.5
+D_FULL: drift, l = 1.0
+QF: quadrupole, l = 0.2, k1 = 1.0
+QD: quadrupole, l = 0.2, k1 = -1.0
+
+FODO: line = (D_HALF, QF, D_FULL, QD, D_HALF)
+use, FODO

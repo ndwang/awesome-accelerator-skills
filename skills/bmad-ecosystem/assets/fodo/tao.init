@@ -1,0 +1,5 @@
+! SPDX-License-Identifier: GPL-3.0-only
+&tao_design_lattice
+  n_universes = 1
+  design_lattice(1)%file = 'fodo.bmad'
+/

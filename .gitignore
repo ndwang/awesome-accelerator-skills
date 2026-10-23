@@ -15,9 +15,12 @@ __pycache__/
 *.pyc
 *.pyo
 .env
+.venv/
 
 # Bmad
 *.digested
+tao.log
+tao.history
 
 # Claude Code
 .claude/

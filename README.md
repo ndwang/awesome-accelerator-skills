@@ -1,148 +1,113 @@
 # Awesome Accelerator Skills
 
-Agent skills for the [Bmad](https://www.classe.cornell.edu/bmad) accelerator simulation
-toolkit, the [Tao](https://www.classe.cornell.edu/bmad/tao.html) program, and [PyTao](https://bmad-sim.github.io/pytao/) (the Python interface to Tao). Compatible with
-Claude Code, OpenAI Codex, VS Code / GitHub Copilot, OpenClaw, Google Antigravity, and any
-tool that supports the open Agent Skills standard.
+An agent skill for working with **Bmad, Tao, and PyTao** from authoritative
+documentation and reproducible examples.
 
-## What's Included
+- **Bmad** defines the accelerator physics conventions, lattice language,
+  element attributes, and native library routines.
+- **Tao** is the interactive program for model inspection, optics, fitting,
+  optimization, and tracking.
+- **PyTao** provides a Python interface to Tao.
 
-### Bmad Skill
-Write, read, and understand Bmad lattice files for charged particle and X-ray simulation.
+The [`bmad-ecosystem`](skills/bmad-ecosystem/SKILL.md) skill routes each task
+to the relevant layer. Its short entry point loads focused guides as needed;
+the upstream manuals and API sources supply the detailed authority.
 
-- **SKILL.md** (450 lines) -- Core lattice syntax, element types, examples, physics essentials
-- **references/elements.md** -- All ~50 element types with attributes and usage
-- **references/attributes.md** -- Apertures, field maps, misalignments, wakes, fringe control
-- **references/lattice-syntax.md** -- Superposition, multipass, beam init, custom attributes
-- **references/physics-conventions.md** -- Coordinates, phase space, fields, optics, SR
-- **references/tracking-methods.md** -- All tracking/matrix methods, PTC, spin, X-ray
+## Install
 
-### Tao Skill
-Operate Tao for accelerator optics simulation, optimization, and analysis.
+Clone this repository and install the entire `skills/bmad-ecosystem` directory
+in the skill search path supported by your agent. Preserve its subdirectories,
+`LICENSE`, and `ATTRIBUTION.md` when copying it.
 
-- **SKILL.md** (396 lines) -- Commands, concepts, workflows
-- **references/commands-reference.md** -- Full command reference with syntax and examples
-- **references/concepts-and-syntax.md** -- Universes, branches, element addressing, expressions
-- **references/initialization.md** -- Startup files, command-line options, lattice loading
-- **references/data.md** -- Datum types, d1/d2 arrays, data sources
-- **references/variables.md** -- Variable definitions, v1 arrays, attribute linking
-- **references/optimization-and-wave.md** -- Optimizers, merit function, wave analysis
-- **references/plotting.md** -- Plot setup, templates, graph and curve customization
-- **references/pipe-interface.md** -- External-process communication via the pipe protocol
-- **references/single-mode.md** -- Non-interactive single-command operation
+For a project whose agent discovers `.agents/skills`:
 
-### PyTao Skill
-Script Tao from Python using pytao, the Python interface to Tao/Bmad.
-
-- **SKILL.md** (262 lines) -- Initialization, API layers, data models, common patterns
-- **references/api-reference.md** -- Method signatures, parameters, and return types
-
-## Installation
-
-These skills follow the open [Agent Skills](https://agentskills.io/home) standard
-and work with any compatible harness. Pick the section that matches your tool.
-
-<details>
-<summary><strong>Claude Code</strong></summary>
-
-**As a plugin** (recommended — keeps skills out of your project tree):
 ```bash
-claude --plugin-dir /path/to/bmad_skills
+git clone https://github.com/ndwang/awesome-accelerator-skills.git
+mkdir -p /path/to/project/.agents/skills
+cp -R awesome-accelerator-skills/skills/bmad-ecosystem /path/to/project/.agents/skills/
 ```
 
-**Project-level** (committed to version control, shared with collaborators):
+For Claude Code, the repository also includes a plugin manifest:
+
 ```bash
-cp -r skills/* /path/to/project/.claude/skills/
+claude --plugin-dir /path/to/awesome-accelerator-skills
 ```
 
-**Personal** (available in every project on your machine):
+Use your client's documented skill installation or reload procedure. The skill
+uses the [Agent Skills format](https://agentskills.io/specification); discovery
+paths and available execution tools depend on the client.
+
+Example requests:
+
+- "Use the Bmad ecosystem skill to explain the coordinates in my particle file."
+- "Find why this Bmad lattice fails to load, and verify the repaired optics in Tao."
+- "Use PyTao to scan a quadrupole and save downstream beta functions to CSV."
+- "Locate the manual section defining this Tao datum and check my installed version."
+
+## Documentation
+
+The skill includes focused guides for [Bmad](skills/bmad-ecosystem/references/bmad.md),
+[Tao](skills/bmad-ecosystem/references/tao.md),
+[PyTao](skills/bmad-ecosystem/references/pytao.md), and
+[end-to-end workflows](skills/bmad-ecosystem/references/workflows.md).
+The [documentation guide](skills/bmad-ecosystem/references/documentation.md)
+maps tasks to upstream source files and explains version selection.
+
+Use the documentation that matches your installed software first. The
+[source manifest](skills/bmad-ecosystem/sources.lock.json) pins fallback
+Bmad/Tao and PyTao sources by commit and file hash. Full manuals are obtained
+on demand. Existing checkouts and the official websites work with ordinary
+file-search and browsing tools.
+
+An **optional**, Python 3.10+ standard-library helper can fetch and search a
+pinned documentation cache:
+
 ```bash
-cp -r skills/* ~/.claude/skills/
+python skills/bmad-ecosystem/scripts/docs.py --cache /path/to/bmad-docs fetch --project all
+python skills/bmad-ecosystem/scripts/docs.py --cache /path/to/bmad-docs search 'canonical momentum' --project bmad
+python skills/bmad-ecosystem/scripts/docs.py --cache /path/to/bmad-docs list --project tao
 ```
 
-</details>
+Fetching requires network access or the matching local source checkout.
+Searching and reading the resulting cache work offline. The skill uses the
+agent's available tools to inspect PDF pages when a figure or layout matters.
 
-<details>
-<summary><strong>OpenAI Codex</strong></summary>
+## Runtime example
 
-Codex scans `.agents/skills/` in your repo (project) and `~/.codex/skills/` (personal).
+The [FODO example](skills/bmad-ecosystem/assets/fodo/fodo.bmad) is a small open
+electron beamline with specified entrance optics. PyTao examples require a
+working Tao shared library as well as the Python package.
 
-**Project-level:**
 ```bash
-cp -r skills/* /path/to/project/.agents/skills/
+python skills/bmad-ecosystem/scripts/doctor.py
+python skills/bmad-ecosystem/scripts/scan_quadrupole.py --help
 ```
 
-**Personal:**
+The scan example recalculates the model for each quadrupole setting, writes
+the requested optics, and restores the original setting after success or
+failure. See its command-line help for lattice and output options.
+
+## Development and validation
+
+Run the offline tests from the repository root:
+
 ```bash
-cp -r skills/* ~/.codex/skills/
+python -m unittest discover -s tests -v
 ```
 
-Codex detects new skills automatically. If one doesn't appear, restart Codex.
+CI runs these tests and validates the skill with the Agent Skills reference
+validator. [Acceptance tasks](tests/acceptance.md) cover source retrieval,
+lattice diagnostics, and PyTao scans. Real Tao execution is an additional
+validation step when that runtime is installed; format validation alone does
+not establish accelerator physics correctness.
 
-</details>
+The skill is self-contained under `skills/bmad-ecosystem`, so it can be copied
+or included from a pinned repository checkout by a downstream skill collection.
+Genesis-specific contribution and submodule tooling changes are separate work.
 
-<details>
-<summary><strong>VS Code / GitHub Copilot</strong></summary>
+## License
 
-Copilot discovers skills in `.github/skills/` (project) and `~/.copilot/skills/` (personal).
-
-**Project-level:**
-```bash
-cp -r skills/* /path/to/project/.github/skills/
-```
-
-**Personal:**
-```bash
-cp -r skills/* ~/.copilot/skills/
-```
-
-Skills also work with the Copilot CLI and Copilot coding agent.
-
-</details>
-
-<details>
-<summary><strong>OpenClaw</strong></summary>
-
-OpenClaw loads skills from `<workspace>/skills/` (per-agent), `~/.openclaw/skills/` (shared
-across agents), or extra directories configured via `skills.load.extraDirs` in
-`~/.openclaw/openclaw.json`.
-
-**Workspace (per-agent):**
-```bash
-cp -r skills/* /path/to/workspace/skills/
-```
-
-**Shared (all agents on this machine):**
-```bash
-cp -r skills/* ~/.openclaw/skills/
-```
-
-OpenClaw watches skill folders and picks up changes on the next agent turn.
-
-</details>
-
-<details>
-<summary><strong>Google Antigravity</strong></summary>
-
-Antigravity uses `.agent/skills/` (workspace) and `~/.gemini/antigravity/skills/` (global).
-
-**Workspace:**
-```bash
-cp -r skills/* /path/to/workspace/.agent/skills/
-```
-
-**Global:**
-```bash
-cp -r skills/* ~/.gemini/antigravity/skills/
-```
-
-</details>
-
-<details>
-<summary><strong>Other Agent-Skills-compatible tools</strong></summary>
-
-Any tool that implements the Agent Skills standard (Cursor, Gemini CLI, etc.) can use these
-skills. Copy the contents of the `skills/` directory into whatever path your tool scans for
-`SKILL.md` files. Consult your tool's documentation for the exact location.
-
-</details>
+Original repository content is **GPL-3.0-only**, following the GPL version 3
+licenses used by Bmad and PyTao. See [LICENSE](LICENSE) and the skill's
+[upstream attribution](skills/bmad-ecosystem/ATTRIBUTION.md). Cached upstream
+documentation retains its original copyright and license notices.

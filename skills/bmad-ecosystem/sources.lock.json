@@ -1,0 +1,853 @@
+{
+  "schema_version": 1,
+  "description": "Pinned upstream source snapshots for optional offline lookup. Runtime versions may differ; consult matching upstream revisions before relying on version-sensitive APIs.",
+  "projects": {
+    "bmad": {
+      "title": "Bmad manual LaTeX sources",
+      "repository": "bmad-sim/bmad-ecosystem",
+      "revision": "6ac367f165955c971a3cad5a1858c09b246471b6",
+      "documentation_url": "https://www.classe.cornell.edu/bmad/manual.html",
+      "license_notice": "bmad/Copyright",
+      "files": [
+        {
+          "path": "bmad/Copyright",
+          "git_blob_sha": "29840aeb056ac6c3c36770780c2cefffcad4a802",
+          "size": 126
+        },
+        {
+          "path": "bmad/doc/attributes.tex",
+          "git_blob_sha": "bea8279e231fedaf5b996304c31e48bfaa2dd21f",
+          "size": 182636
+        },
+        {
+          "path": "bmad/doc/beam-init.tex",
+          "git_blob_sha": "87fa7e7d262f061f5eeffc199a58d6e3ca7b7c25",
+          "size": 26574
+        },
+        {
+          "path": "bmad/doc/bibliography.tex",
+          "git_blob_sha": "01edb552f16b953fca0a4d8682ed6f17b7c66efc",
+          "size": 15034
+        },
+        {
+          "path": "bmad/doc/bmad.tex",
+          "git_blob_sha": "773390bb30ac6a085d383306825fee2526803f13",
+          "size": 5838
+        },
+        {
+          "path": "bmad/doc/charged-tracking.tex",
+          "git_blob_sha": "3c591641bd7fe65612951658270eaf9e51740318",
+          "size": 96654
+        },
+        {
+          "path": "bmad/doc/concepts.tex",
+          "git_blob_sha": "77940f8edc69f813fd246b762a56c7e797586f1c",
+          "size": 14387
+        },
+        {
+          "path": "bmad/doc/conversion.tex",
+          "git_blob_sha": "c6e8fc61222b5ce7b71360f98aaf866d27c40c3f",
+          "size": 6044
+        },
+        {
+          "path": "bmad/doc/coordinates.tex",
+          "git_blob_sha": "ca444da5867625193fbd1ccc227df2f3f0a49a2c",
+          "size": 42984
+        },
+        {
+          "path": "bmad/doc/cover-page.tex",
+          "git_blob_sha": "3a66d4a28a07fc85410f031eb68bbbfd539b3f87",
+          "size": 280
+        },
+        {
+          "path": "bmad/doc/cpp-interface.tex",
+          "git_blob_sha": "430afd3fb9952c74cacae1c63683074134ffd732",
+          "size": 5165
+        },
+        {
+          "path": "bmad/doc/ele-struct.tex",
+          "git_blob_sha": "ccc7470fd8325f7e17b31496a0a9ca50a45976f1",
+          "size": 46957
+        },
+        {
+          "path": "bmad/doc/electromagnetic-fields.tex",
+          "git_blob_sha": "2e07d64922029455d8b06f67c58fd1c038756570",
+          "size": 44001
+        },
+        {
+          "path": "bmad/doc/elements.tex",
+          "git_blob_sha": "d4e392e7f5c7f6606ff954b1f731b5c06dc6d76f",
+          "size": 302016
+        },
+        {
+          "path": "bmad/doc/example-program.tex",
+          "git_blob_sha": "47c5063719c95d3dd2c4b0e0bd3023c0d0749de3",
+          "size": 14866
+        },
+        {
+          "path": "bmad/doc/fringe-fields.tex",
+          "git_blob_sha": "fcee09f43a9da403e601db85e54668b40fedceb1",
+          "size": 24543
+        },
+        {
+          "path": "bmad/doc/gen-grad-old.tex",
+          "git_blob_sha": "7db1b2bbbce81318303045494ba1ec5c5e3b0d8a",
+          "size": 7308
+        },
+        {
+          "path": "bmad/doc/hdf5-programming.tex",
+          "git_blob_sha": "51ecf76fa6463d4a1b850e5916c6fcea07b50a07",
+          "size": 12632
+        },
+        {
+          "path": "bmad/doc/helper-routines.tex",
+          "git_blob_sha": "5d016d5bab6273a9083f2111663847cca44f4371",
+          "size": 2573
+        },
+        {
+          "path": "bmad/doc/introduction.tex",
+          "git_blob_sha": "fe213be43e015a52fe0126947b2c97efbea4ab6f",
+          "size": 3766
+        },
+        {
+          "path": "bmad/doc/lat-struct.tex",
+          "git_blob_sha": "72b9344e69a105be811f90669ce4113f0e4ba3bf",
+          "size": 41353
+        },
+        {
+          "path": "bmad/doc/lattice-examples.tex",
+          "git_blob_sha": "80978f034d9bf06f9581f52be40496525e61ad83",
+          "size": 19761
+        },
+        {
+          "path": "bmad/doc/lattice-file.tex",
+          "git_blob_sha": "22eb2ff4160b0dea627f493dc522d8f0e6fdbb7d",
+          "size": 87026
+        },
+        {
+          "path": "bmad/doc/lines-and-lists.tex",
+          "git_blob_sha": "15044aaa534c23afccdffedbfd0282fe8780b29b",
+          "size": 17503
+        },
+        {
+          "path": "bmad/doc/list-element-attributes.tex",
+          "git_blob_sha": "41a7c583715a9712c5df8c62757a92b7090485a1",
+          "size": 137553
+        },
+        {
+          "path": "bmad/doc/macros.tex",
+          "git_blob_sha": "319ca42f69fd516e31f4b47115ef8725dafbcaa8",
+          "size": 8554
+        },
+        {
+          "path": "bmad/doc/manipulation-lat-ele.tex",
+          "git_blob_sha": "599d41f4b3abf90cdcc31f256007da307dcc0373",
+          "size": 8581
+        },
+        {
+          "path": "bmad/doc/methods.tex",
+          "git_blob_sha": "671cbcfc9c7efc640e7f2b0e6428ae097bde6e1b",
+          "size": 52188
+        },
+        {
+          "path": "bmad/doc/misc-programming.tex",
+          "git_blob_sha": "bb283983fc4cbfe5dc7d31083853a1e9bfb92d6d",
+          "size": 25045
+        },
+        {
+          "path": "bmad/doc/multiparticle.tex",
+          "git_blob_sha": "3c0c85e5f7d0dd57045b0d555d7f4c45ea511654",
+          "size": 29500
+        },
+        {
+          "path": "bmad/doc/multipass.tex",
+          "git_blob_sha": "31f0e9f3e712be9ff433fa1e5f175202fdd3db97",
+          "size": 15299
+        },
+        {
+          "path": "bmad/doc/normal-modes.tex",
+          "git_blob_sha": "1e546269264f9348bf37eb65e010931bbc6d5939",
+          "size": 10814
+        },
+        {
+          "path": "bmad/doc/opal.tex",
+          "git_blob_sha": "61396512d5a79994cca6be8d9754080280d5b7b4",
+          "size": 3853
+        },
+        {
+          "path": "bmad/doc/optics.tex",
+          "git_blob_sha": "af9ee2f9446eafd191a0ea8b64cb09a13d707ee4",
+          "size": 24189
+        },
+        {
+          "path": "bmad/doc/orientation.tex",
+          "git_blob_sha": "1a41a90691ee4a60c7c858df3d94fe3fb6ae7e63",
+          "size": 6332
+        },
+        {
+          "path": "bmad/doc/overview.tex",
+          "git_blob_sha": "ad1be7af26762509ab05e163c02ce6ff74b9634b",
+          "size": 2758
+        },
+        {
+          "path": "bmad/doc/param-statements.tex",
+          "git_blob_sha": "15b0dd505833afaafc6bd39862e7abecb9fe7ca9",
+          "size": 20685
+        },
+        {
+          "path": "bmad/doc/param-structs.tex",
+          "git_blob_sha": "ab33d338a17ffabf4aad5eb1f209224b8b30381c",
+          "size": 35552
+        },
+        {
+          "path": "bmad/doc/phase-space.tex",
+          "git_blob_sha": "1249ea4aa0979f6d1d1fed56775df0ece43fbff8",
+          "size": 12200
+        },
+        {
+          "path": "bmad/doc/programming.tex",
+          "git_blob_sha": "05fd59c2300dc2b5e0d7bd29f55e23c1d209e84e",
+          "size": 18528
+        },
+        {
+          "path": "bmad/doc/ptc-programming.tex",
+          "git_blob_sha": "db0f2bf04cf3cc306ed8899171b0b246dc8f21e1",
+          "size": 14822
+        },
+        {
+          "path": "bmad/doc/ptc-use.tex",
+          "git_blob_sha": "a0efeba756e952bd1926723c675a835e2cd28c5d",
+          "size": 3127
+        },
+        {
+          "path": "bmad/doc/quick-plot.tex",
+          "git_blob_sha": "b5f9c665532b3233baddc3a250319ec8bc1baeea",
+          "size": 25203
+        },
+        {
+          "path": "bmad/doc/reading-and-writing-lattices.tex",
+          "git_blob_sha": "6eedafda8a0aeaa601c4aea5167708436577b3da",
+          "size": 6137
+        },
+        {
+          "path": "bmad/doc/simulation-modules.tex",
+          "git_blob_sha": "2b04fbd7fb35c686d8c0d65cf41baa98fed5eb18",
+          "size": 9859
+        },
+        {
+          "path": "bmad/doc/spin.tex",
+          "git_blob_sha": "ec01a14fd4514fefd81b616c08e6bc5a80be952e",
+          "size": 65535
+        },
+        {
+          "path": "bmad/doc/subroutines.tex",
+          "git_blob_sha": "847c64b6f4f1c4a8631414372506b537484da698",
+          "size": 156561
+        },
+        {
+          "path": "bmad/doc/superposition.tex",
+          "git_blob_sha": "3a7b9722a73df9d02623674430eb126073a24200",
+          "size": 26144
+        },
+        {
+          "path": "bmad/doc/synchrotron-radiation.tex",
+          "git_blob_sha": "946c7bec0ec9a13779c9bd3926877831392a99c0",
+          "size": 24192
+        },
+        {
+          "path": "bmad/doc/taylor-maps.tex",
+          "git_blob_sha": "69983ad4a0dcb0f771d516d0904b09b8a69748e5",
+          "size": 14275
+        },
+        {
+          "path": "bmad/doc/tracking.tex",
+          "git_blob_sha": "ee132136a4035e3e67e9b658e6066a22ad677879",
+          "size": 41399
+        },
+        {
+          "path": "bmad/doc/wakefields.tex",
+          "git_blob_sha": "d450321d3e5b2ad8b91a8218240437796abbe453",
+          "size": 13019
+        },
+        {
+          "path": "bmad/doc/xray-tracking.tex",
+          "git_blob_sha": "0491043aff00167bf0fe0cddd1738adc956e9eac",
+          "size": 58174
+        }
+      ]
+    },
+    "tao": {
+      "title": "Tao manual LaTeX sources",
+      "repository": "bmad-sim/bmad-ecosystem",
+      "revision": "6ac367f165955c971a3cad5a1858c09b246471b6",
+      "documentation_url": "https://www.classe.cornell.edu/bmad/tao.html",
+      "license_notice": "bmad/Copyright",
+      "files": [
+        {
+          "path": "bmad/Copyright",
+          "git_blob_sha": "29840aeb056ac6c3c36770780c2cefffcad4a802",
+          "size": 126
+        },
+        {
+          "path": "tao/doc/bibliography.tex",
+          "git_blob_sha": "0b1ea37f260f282b87a573ba3d12e2cc5292ba5f",
+          "size": 3087
+        },
+        {
+          "path": "tao/doc/command-list.tex",
+          "git_blob_sha": "0ffcf7be5d4bae08836a7ec85fb64d9080962024",
+          "size": 201368
+        },
+        {
+          "path": "tao/doc/cover-page.tex",
+          "git_blob_sha": "ce6b3b8ee31f8583f051ea3e5d107f1417c1123e",
+          "size": 354
+        },
+        {
+          "path": "tao/doc/customization.tex",
+          "git_blob_sha": "99ac9394904bec3dada30320f311161382e8807c",
+          "size": 35555
+        },
+        {
+          "path": "tao/doc/data.tex",
+          "git_blob_sha": "deca5084ea67c6b0edf2ae239a9b6d9a9eb234f8",
+          "size": 118821
+        },
+        {
+          "path": "tao/doc/initialization.tex",
+          "git_blob_sha": "5d82eff77b471abcacbb5a8a2b3aa50db1fdaf9f",
+          "size": 211058
+        },
+        {
+          "path": "tao/doc/introduction.tex",
+          "git_blob_sha": "867e9527730d1f6f2e7ea751c04e8b96d958cffe",
+          "size": 6239
+        },
+        {
+          "path": "tao/doc/macros.tex",
+          "git_blob_sha": "c26a9d4d188fadf13c8b3cbd17f30710b265a471",
+          "size": 3230
+        },
+        {
+          "path": "tao/doc/optimization.tex",
+          "git_blob_sha": "ac44e03e4017a0559d57a66f9ef67e50a84f407c",
+          "size": 39891
+        },
+        {
+          "path": "tao/doc/organization.tex",
+          "git_blob_sha": "1933468b0e6b243f7ef6372f396e3f565240e0fd",
+          "size": 13273
+        },
+        {
+          "path": "tao/doc/overview.tex",
+          "git_blob_sha": "2c16b86caf9ccb65b364898413d944256a141717",
+          "size": 5232
+        },
+        {
+          "path": "tao/doc/pipe-interface-commands.tex",
+          "git_blob_sha": "7f18094993e7f9fc054f5f1b5ae22a2e056381c8",
+          "size": 65754
+        },
+        {
+          "path": "tao/doc/pipe-interface.tex",
+          "git_blob_sha": "574861adb8d2b64f810f298c39e67f92fc07e826",
+          "size": 10351
+        },
+        {
+          "path": "tao/doc/plotting.tex",
+          "git_blob_sha": "43e88d335ec17fdea83fd9ad9d172f8134cf0616",
+          "size": 45537
+        },
+        {
+          "path": "tao/doc/single-mode.tex",
+          "git_blob_sha": "c9c8b95f20518e00f00754790d473c230701dac4",
+          "size": 10955
+        },
+        {
+          "path": "tao/doc/structures.tex",
+          "git_blob_sha": "4c82c0e636a46b8980667ed0e8ac083f45af7519",
+          "size": 15404
+        },
+        {
+          "path": "tao/doc/syntax.tex",
+          "git_blob_sha": "81bc187431b10aec618cac4fd00f55c0cd7f84b7",
+          "size": 26682
+        },
+        {
+          "path": "tao/doc/tao.tex",
+          "git_blob_sha": "475832e99bdcfeb3aaa8d8a16c922e7882000f24",
+          "size": 3290
+        },
+        {
+          "path": "tao/doc/variables.tex",
+          "git_blob_sha": "7e856dc17e5a57bedf1cdbba9796fc73ff0bf978",
+          "size": 12464
+        },
+        {
+          "path": "tao/doc/wave.tex",
+          "git_blob_sha": "b7c95b54e7bcbbb9eef5849b7cb72e2031499f0a",
+          "size": 10159
+        }
+      ]
+    },
+    "pytao": {
+      "title": "PyTao documentation, notebook inputs, and API source",
+      "repository": "bmad-sim/pytao",
+      "revision": "c22d07778faf2b70f28a914362e215e5bb9ced25",
+      "documentation_url": "https://bmad-sim.github.io/pytao/",
+      "license_notice": "LICENSE",
+      "files": [
+        {
+          "path": "docs/api/config.md",
+          "git_blob_sha": "aa68a6f3111190719e23cdd133eee36039d5bab7",
+          "size": 882
+        },
+        {
+          "path": "docs/api/element.md",
+          "git_blob_sha": "1a48b1c76eb91f5a0a3e54e31962ec1b31ecb592",
+          "size": 2164
+        },
+        {
+          "path": "docs/api/model.md",
+          "git_blob_sha": "f9842b0001b8f3fa4e0c80eb395f52353b469e9b",
+          "size": 956
+        },
+        {
+          "path": "docs/api/plot-bokeh.md",
+          "git_blob_sha": "0d9e53106414a6f2bfc339a42b790582f949452f",
+          "size": 25
+        },
+        {
+          "path": "docs/api/plot-mpl.md",
+          "git_blob_sha": "40edfb67f8208bed414fb4af1d2e3a63b38ffc2f",
+          "size": 23
+        },
+        {
+          "path": "docs/api/plot.md",
+          "git_blob_sha": "4a2440baaea1e8ef93d689ff9ac32c04739360af",
+          "size": 161
+        },
+        {
+          "path": "docs/api/subprocesstao.md",
+          "git_blob_sha": "d9401d19107d6310dd3653ddbadc929bec08e271",
+          "size": 24
+        },
+        {
+          "path": "docs/api/tao.md",
+          "git_blob_sha": "78243d8679464c42fd1f2005099350e764a1081b",
+          "size": 14
+        },
+        {
+          "path": "docs/constraints/api/datum.md",
+          "git_blob_sha": "422ca221b7e6f29efd4e3479eb831f62b0c7bf6d",
+          "size": 2312
+        },
+        {
+          "path": "docs/constraints/api/ele.md",
+          "git_blob_sha": "39d995c4094f85f5ba3621fbc8b298c2a6f72a85",
+          "size": 2902
+        },
+        {
+          "path": "docs/constraints/api/index.md",
+          "git_blob_sha": "708bf255994f809c7c1ceff87d0dc8920ff688d6",
+          "size": 5608
+        },
+        {
+          "path": "docs/constraints/config.md",
+          "git_blob_sha": "c7e0a31bdc73fc6ed3e46ea6f456df92ad5f3127",
+          "size": 7925
+        },
+        {
+          "path": "docs/constraints/index.md",
+          "git_blob_sha": "caf1daeb714e147fb64c16996b6ce321f535d82c",
+          "size": 5670
+        },
+        {
+          "path": "docs/development.md",
+          "git_blob_sha": "e1bc9a8d7edddfeb96396607f95fc6542ec63381",
+          "size": 5353
+        },
+        {
+          "path": "docs/examples/basic.ipynb",
+          "git_blob_sha": "4471247ca768631013b7a870924eb95f4a8e0243",
+          "size": 28154
+        },
+        {
+          "path": "docs/examples/beam_track_progress_bar.ipynb",
+          "git_blob_sha": "e85cb047e6c9b90e3a9823cb35eb8647d190a78b",
+          "size": 16033
+        },
+        {
+          "path": "docs/examples/bunch.ipynb",
+          "git_blob_sha": "cf4595c0f6e2ab36c3aae4d43bf488a4fd462b45",
+          "size": 18471
+        },
+        {
+          "path": "docs/examples/config.ipynb",
+          "git_blob_sha": "c03c58be3a66112710e4e94d497e7c7697a2609a",
+          "size": 7842
+        },
+        {
+          "path": "docs/examples/elements.ipynb",
+          "git_blob_sha": "9b0a66c3090a629dc5741acbb6ca9be5bfd497a2",
+          "size": 11682
+        },
+        {
+          "path": "docs/examples/fodo.ipynb",
+          "git_blob_sha": "90fc17df20adeb3e4446ce006b4672c37ef0312e",
+          "size": 27399
+        },
+        {
+          "path": "docs/examples/plot-bokeh-particles.ipynb",
+          "git_blob_sha": "665e71cd05fb03d94fb87a61a0d19d4083af3438",
+          "size": 14386
+        },
+        {
+          "path": "docs/examples/plot-bokeh-vars.ipynb",
+          "git_blob_sha": "c406f9cad8f9451802072d90d6842ec4188c467b",
+          "size": 4060
+        },
+        {
+          "path": "docs/examples/plot-bokeh.ipynb",
+          "git_blob_sha": "12c38b1b5c8a851af2d79b6c1bac2ba7f9021535",
+          "size": 13358
+        },
+        {
+          "path": "docs/examples/plot-matplotlib.ipynb",
+          "git_blob_sha": "baeb10b7e6ee2d591b35899b4f846007f0d179ff",
+          "size": 14210
+        },
+        {
+          "path": "docs/examples/special_parsers.ipynb",
+          "git_blob_sha": "f0ce9f28468b6e5aee04b5d8ad620643d404cb7f",
+          "size": 12781
+        },
+        {
+          "path": "docs/index.md",
+          "git_blob_sha": "a83db6962e20409260a583e50b2b934eb5e34766",
+          "size": 1499
+        },
+        {
+          "path": "docs/installation.md",
+          "git_blob_sha": "d0a503ecf180b9d4cdaecbbe3106f5d8bfc51f8a",
+          "size": 841
+        },
+        {
+          "path": "docs/release_notes.md",
+          "git_blob_sha": "3eda72317a50abeba20c0c2dd7930137ec2c39ba",
+          "size": 13999
+        },
+        {
+          "path": "docs/usage.md",
+          "git_blob_sha": "41df255c8a43c05373e5e327ac50d260255b3440",
+          "size": 13394
+        },
+        {
+          "path": "LICENSE",
+          "git_blob_sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+          "size": 35149
+        },
+        {
+          "path": "pytao/__init__.py",
+          "git_blob_sha": "efc629c1a7f7dfd19b7d46b5be3ca133eec1ba2b",
+          "size": 888
+        },
+        {
+          "path": "pytao/__main__.py",
+          "git_blob_sha": "daaaca940facbfb301a91d2b2b556113b8920244",
+          "size": 139
+        },
+        {
+          "path": "pytao/_shmem_compat.py",
+          "git_blob_sha": "1805c3b5cf562e1bf50cf95ce2d6fd96384837ab",
+          "size": 1690
+        },
+        {
+          "path": "pytao/cli.py",
+          "git_blob_sha": "78788eb7b4a9c68f9c7e262747e95c7464233518",
+          "size": 8666
+        },
+        {
+          "path": "pytao/constraints/__init__.py",
+          "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "pytao/constraints/__main__.py",
+          "git_blob_sha": "5d6a8109e6ce6ef4587c5fb02bb9d621aa3fa09b",
+          "size": 31
+        },
+        {
+          "path": "pytao/constraints/config.py",
+          "git_blob_sha": "d919835584150c5b3760c200e284eac94ada17b6",
+          "size": 18264
+        },
+        {
+          "path": "pytao/constraints/main.py",
+          "git_blob_sha": "203d72a7d48d1e2e3e94ecdb6ca1b4896ef83370",
+          "size": 17339
+        },
+        {
+          "path": "pytao/constraints/observables/__init__.py",
+          "git_blob_sha": "d187bbde450213486e9ed1dade1bbe036ba426ad",
+          "size": 1724
+        },
+        {
+          "path": "pytao/constraints/observables/base.py",
+          "git_blob_sha": "a5745f1a4018c4275702e9815c02bc6254c092e4",
+          "size": 5003
+        },
+        {
+          "path": "pytao/constraints/observables/datum.py",
+          "git_blob_sha": "7e7cfe71fa2b9b4368e70ae109d299b6f40f5ad8",
+          "size": 5940
+        },
+        {
+          "path": "pytao/constraints/observables/ele.py",
+          "git_blob_sha": "61ca84b0db4a100288e7dcc53bb17870863bcc3c",
+          "size": 20952
+        },
+        {
+          "path": "pytao/constraints/observables/twiss.py",
+          "git_blob_sha": "88cbe61f4ba88fb1797df1960a96e52767148e72",
+          "size": 1704
+        },
+        {
+          "path": "pytao/constraints/pydantic.py",
+          "git_blob_sha": "c2c5b386b8fc95a65fd1fdd163df54e5f8e06c5e",
+          "size": 872
+        },
+        {
+          "path": "pytao/constraints/results.py",
+          "git_blob_sha": "2b58e34c5ad751af62ac47680974b946099a14a7",
+          "size": 2378
+        },
+        {
+          "path": "pytao/core.py",
+          "git_blob_sha": "3e02aa7bc887a398e56cdf98c2a568ee1f43e52e",
+          "size": 29317
+        },
+        {
+          "path": "pytao/errors.py",
+          "git_blob_sha": "22c561f936ebf52e06e5f33cee9080c6cdfa3793",
+          "size": 16749
+        },
+        {
+          "path": "pytao/interface_commands.py",
+          "git_blob_sha": "f289a50340873d7156ade75fe8d37bca07a67847",
+          "size": 140806
+        },
+        {
+          "path": "pytao/interface.tpl.py",
+          "git_blob_sha": "b05917d0edf094ed057451b8eaf9d44592c1eabb",
+          "size": 1263
+        },
+        {
+          "path": "pytao/misc/__init__.py",
+          "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "pytao/misc/csr_plot.py",
+          "git_blob_sha": "60d11f33ad82ce843da8d3655a27381f73428e9c",
+          "size": 1936
+        },
+        {
+          "path": "pytao/misc/csr.py",
+          "git_blob_sha": "a67f34712ea3f3d2c6083122c046b341bfe2b170",
+          "size": 5634
+        },
+        {
+          "path": "pytao/misc/markers.py",
+          "git_blob_sha": "5abf783f0ad387cba1cee58554a07b511fa9c058",
+          "size": 577
+        },
+        {
+          "path": "pytao/model/__init__.py",
+          "git_blob_sha": "250f39337ccbfebf994a01676bb1ef58476787bf",
+          "size": 4299
+        },
+        {
+          "path": "pytao/model/_generated.py",
+          "git_blob_sha": "0e0e990bde2676ddf34b5719788d0bdb55773499",
+          "size": 87011
+        },
+        {
+          "path": "pytao/model/base.py",
+          "git_blob_sha": "22e5f8b0ab41374ed8bc4052690a1e4a4dbf50f4",
+          "size": 27636
+        },
+        {
+          "path": "pytao/model/codegen.py",
+          "git_blob_sha": "ad34753e70cdd8f6b022b25749a518b48528ea34",
+          "size": 60124
+        },
+        {
+          "path": "pytao/model/config.py",
+          "git_blob_sha": "09fe87e61658394ef38704165796e172fe499426",
+          "size": 9436
+        },
+        {
+          "path": "pytao/model/ele/__init__.py",
+          "git_blob_sha": "82e630835913319a2ffd21e9a36bdc52a00fc175",
+          "size": 2251
+        },
+        {
+          "path": "pytao/model/ele/comb.py",
+          "git_blob_sha": "1e935099aa2cfbbb8b4213c3e9a7ce84dcf99af0",
+          "size": 12866
+        },
+        {
+          "path": "pytao/model/ele/ele.py",
+          "git_blob_sha": "809822b87d2c297fb3023e81769362e046035796",
+          "size": 60770
+        },
+        {
+          "path": "pytao/model/ele/sections.py",
+          "git_blob_sha": "9013b722bfd828a971140cb7973d855f76aaaf0d",
+          "size": 36169
+        },
+        {
+          "path": "pytao/model/ele/time_stats.py",
+          "git_blob_sha": "e8f47ecd668eeec52264a14a084ada5f8346f604",
+          "size": 3172
+        },
+        {
+          "path": "pytao/model/header.tpl.py",
+          "git_blob_sha": "27f7ca5ea89d7ad793cfcb4357477ae6bdf193aa",
+          "size": 538
+        },
+        {
+          "path": "pytao/model/types.py",
+          "git_blob_sha": "7111bc335788cf573d320432b6d533b2f2c6180d",
+          "size": 9356
+        },
+        {
+          "path": "pytao/pbar.py",
+          "git_blob_sha": "d7909a48bfbaf1853c8bb55ea641f0478d540e4d",
+          "size": 6657
+        },
+        {
+          "path": "pytao/plotting/__init__.py",
+          "git_blob_sha": "91f4a15eb34e589fde496ee603e6c78b3d641e9b",
+          "size": 538
+        },
+        {
+          "path": "pytao/plotting/bokeh.py",
+          "git_blob_sha": "85b885cd285525ce16710a161dd8f0491e536353",
+          "size": 91581
+        },
+        {
+          "path": "pytao/plotting/curves.py",
+          "git_blob_sha": "7a1bc010a9c567b24e5b9520e26ab91403e30c57",
+          "size": 4999
+        },
+        {
+          "path": "pytao/plotting/ele_methods.py",
+          "git_blob_sha": "667f07db0bf852fe2238028ed3becc1473809fa3",
+          "size": 11515
+        },
+        {
+          "path": "pytao/plotting/fields.py",
+          "git_blob_sha": "c572bcc4192908527a45e9c61a453e9cae4aee0f",
+          "size": 1281
+        },
+        {
+          "path": "pytao/plotting/floor_plan_shapes.py",
+          "git_blob_sha": "8b41ffe8bd068ed3ead05e0a7cd6d548ca3c3c5f",
+          "size": 14586
+        },
+        {
+          "path": "pytao/plotting/layout_shapes.py",
+          "git_blob_sha": "a30a9eb390b1a4db6c69e6323db15853fbb555c8",
+          "size": 9093
+        },
+        {
+          "path": "pytao/plotting/mpl.py",
+          "git_blob_sha": "22e22ecc3b56d82d579b621945cd6580e7bea5ae",
+          "size": 43260
+        },
+        {
+          "path": "pytao/plotting/patches.py",
+          "git_blob_sha": "1e2d84426db12bbf7cd65567d439e2596cb62c65",
+          "size": 4412
+        },
+        {
+          "path": "pytao/plotting/pgplot.py",
+          "git_blob_sha": "2d4becb6d9b47c8c858ee714c81e848d1be06fb1",
+          "size": 6397
+        },
+        {
+          "path": "pytao/plotting/plot.py",
+          "git_blob_sha": "225b80267f630546dae088ce93852b53a4498475",
+          "size": 66437
+        },
+        {
+          "path": "pytao/plotting/settings.py",
+          "git_blob_sha": "dcf65ffe449481cbcaf171a3d64fd042ed7eee35",
+          "size": 23767
+        },
+        {
+          "path": "pytao/plotting/types.py",
+          "git_blob_sha": "c24d8d5f68e9851b58c1966a97e9e7c9f641f4d8",
+          "size": 6684
+        },
+        {
+          "path": "pytao/plotting/util.py",
+          "git_blob_sha": "aeb4e87d771c49e8ca99e793edf6e4dae9cc2519",
+          "size": 4734
+        },
+        {
+          "path": "pytao/startup.py",
+          "git_blob_sha": "ab24e9ec466dad7e72622bca787f7d90233279ef",
+          "size": 20457
+        },
+        {
+          "path": "pytao/subproc_main.py",
+          "git_blob_sha": "763f1d013f1e7180a02e24e4fc690057fd09508d",
+          "size": 4330
+        },
+        {
+          "path": "pytao/subproc.py",
+          "git_blob_sha": "6526747810c9557f0a80b3ac983563ed57adef7f",
+          "size": 21493
+        },
+        {
+          "path": "pytao/tao.py",
+          "git_blob_sha": "68fbcc8f17d73b0494d2ca2a192dd6ae77d38f31",
+          "size": 89012
+        },
+        {
+          "path": "pytao/util/__init__.py",
+          "git_blob_sha": "36afeeb27de98f46d89e9e0fa7e68c336fdb1078",
+          "size": 203
+        },
+        {
+          "path": "pytao/util/completion.py",
+          "git_blob_sha": "c21701b8acb22fe6214747fca9589953d351f172",
+          "size": 3652
+        },
+        {
+          "path": "pytao/util/importing.py",
+          "git_blob_sha": "aea0cd4b727fb2168de87bd42672f45b4aa523e9",
+          "size": 570
+        },
+        {
+          "path": "pytao/util/parser_types.py",
+          "git_blob_sha": "a6753a807dbcd0d475a0b7bfab0f95a758b8b12f",
+          "size": 6601
+        },
+        {
+          "path": "pytao/util/parsers.py",
+          "git_blob_sha": "12271033269becb3e5582131a5d51b5e72e787ed",
+          "size": 49066
+        },
+        {
+          "path": "pytao/util/paths.py",
+          "git_blob_sha": "9ca111d3fb37dc0fe9f778042c3854e3a3cdf13c",
+          "size": 2054
+        }
+      ]
+    }
+  }
+}

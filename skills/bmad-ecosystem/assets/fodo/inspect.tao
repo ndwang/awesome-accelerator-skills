@@ -1,0 +1,6 @@
+! SPDX-License-Identifier: GPL-3.0-only
+! Start Tao in a writable copy: tao -init tao.init -noplot
+! At the Tao prompt: call inspect.tao
+show lattice
+show element QF
+show element END
