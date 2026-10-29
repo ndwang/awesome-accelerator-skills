@@ -1,9 +1,7 @@
 # Tao initialization
 
-`tao.init` describes a Tao session: which lattices to load, what data and variables
-to define, and how to initialize plots or particle bunches. The `.bmad` file
-describes the physical lattice. A Tao command file contains operations to execute
-after initialization. These are three different input languages and roles.
+`tao.init` describes the lattices, data, variables, plots, and particle bunches
+that initialize a Tao session.
 
 ## A small initialization file
 

@@ -23,8 +23,8 @@ search for the element name, for example `s:list.quadrupole`.
 | --- | --- | --- | --- |
 | `drift` | Propagation through a length of free space | `l` | `s:drift` |
 | `marker` | A zero-length named location, such as an interaction point or optics observation point | — | `s:mark` |
-| `monitor`, `instrument` | Label diagnostic devices; ordinary tracking is drift-like | `l` | `s:monitor` |
-| `pipe` | Represent a beam-pipe section; ordinary tracking is drift-like | `l`, aperture settings | `s:monitor` |
+| `monitor`, `instrument` | Label diagnostic devices; particle tracking is drift-like | `l` | `s:monitor` |
+| `pipe` | Represent a beam-pipe section; particle tracking is drift-like | `l`, aperture settings | `s:monitor` |
 | `ecollimator` | Drift-like transport with an elliptical aperture | `l`, `x_limit`, `y_limit` | `s:col` |
 | `rcollimator` | Drift-like transport with a rectangular aperture | `l`, `x_limit`, `y_limit` | `s:col` |
 
@@ -50,8 +50,7 @@ with that location.
 | `ab_multipole` | Thin multipole representation using normal/skew coefficients | `a1`, `b1`, `a2`, `b2`, ... | `s:ab.m` |
 | `wiggler`, `undulator` | Periodic magnetic structure | `l` and field/model-specific settings | `s:wiggler` |
 
-The tutorial's [simple lattice](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad-doc/tutorial_bmad_tao/lattice_files/simple.bmad)
-contains these definitions:
+The bundled [beamline](../../assets/beamline/lattice.bmad) contains these definitions:
 
 ```bmad
 b: sbend, l = 0.5, g = 1, e1 = 0.1, dg = 0.001

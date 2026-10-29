@@ -1,10 +1,7 @@
 # Bmad: the physical model and lattice language
 
-Bmad is a library for accelerator and X-ray simulations. A Bmad lattice describes
-the machine: its elements, their arrangement, fields, reference particle, and
-modeling choices. It does not contain commands to plot optics or run an optimizer;
-those actions belong to a program such as [Tao](tao.md). [PyTao](pytao.md) lets
-Python, including an agent's Python session, operate that program.
+A Bmad lattice describes elements, their arrangement, fields, reference
+particle, and modeling choices.
 
 ## How a lattice is organized
 
@@ -54,42 +51,11 @@ use, lat
 and geometry. The next three statements define elements, `line` orders them,
 and `use` selects the line that becomes the lattice.
 
-For the bend, `g` sets the design curvature and `dg` adds a field error without
-changing that design curvature. For the quadrupole, `k1` is a normalized strength
-in m^-2. The [element guide](bmad/elements.md) explains these distinctions.
+The [element guide](bmad/elements.md) explains the bend and quadrupole attributes.
 
-## Geometry and initial conditions
-
-An **open** branch propagates the specified entrance orbit and optics downstream.
-A **closed** branch asks the application for a closed orbit and periodic optics.
-Choosing `closed` does not move magnets to close the machine in floor coordinates;
-it is also useful for studying a single periodic cell.
-
-For a new open lattice, specify `beginning[beta_a]`, `beginning[alpha_a]`,
-`beginning[beta_b]`, and `beginning[alpha_b]` as appropriate. The `a` and `b`
-labels denote normal modes; they need not coincide with the horizontal and
-vertical planes when the motion is coupled.
-
-`e_tot` means total energy, including rest energy. `p0c` is reference momentum
-times the speed of light; both are expressed in eV. Set either one to establish
-the reference energy/momentum. Individual particles can differ from that
-reference, and accelerating elements can change the reference along the lattice.
-
-See [physics conventions](bmad/physics-conventions.md) for coordinates, units,
-fields, and optics. The official **Lattice File Global Parameters** chapter
-([source](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad/doc/param-statements.tex),
-`s:param` and `s:beginning`) gives the complete setup options.
-
-## Choose a topic
-
-| Task | Read |
-| --- | --- |
-| Write or understand definitions, expressions, lines, includes, and element selectors | [Lattice syntax](bmad/lattice-syntax.md) |
-| Choose an element or understand its main attributes | [Elements](bmad/elements.md) |
-| Interpret particle coordinates, energy, RF phase, fields, or Twiss quantities | [Physics conventions](bmad/physics-conventions.md) |
-| Represent shared knobs, alignment supports, and lord/slave relationships | [Controllers](bmad/controllers.md) |
-| Insert overlapping elements or model repeated passes | [Lattice composition](bmad/lattice-syntax.md#superposition-and-multipass) |
-| Load the lattice and inspect calculated quantities | [Tao](tao.md) or [PyTao](pytao.md) |
+The [lattice syntax guide](bmad/lattice-syntax.md) covers definitions,
+expressions, includes, and line expansion. [Physics conventions](bmad/physics-conventions.md)
+cover reference quantities, geometry, coordinates, and optics.
 
 ## Capabilities beyond the basic lattice
 

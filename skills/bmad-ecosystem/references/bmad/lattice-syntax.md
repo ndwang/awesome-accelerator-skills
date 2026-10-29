@@ -11,8 +11,8 @@ and [composition](#superposition-and-multipass).
 ## Statements and definitions
 
 An element definition has the form `name: element_type, attribute = value, ...`.
-For example, from the official
-[simple lattice](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad-doc/tutorial_bmad_tao/lattice_files/simple.bmad):
+For example, from the bundled
+[beamline](../../assets/beamline/lattice.bmad):
 
 ```bmad
 d: drift, l = 0.5
@@ -53,7 +53,7 @@ qa[k1] = 0.30
 ```
 
 `qb: qa` copies the attributes of `qa` at that point in parsing. Here `qb[k1]`
-remains -0.23 after `qa[k1]` changes. Ordinary expressions are evaluated
+remains -0.23 after `qa[k1]` changes. Lattice expressions are evaluated
 immediately; they do not establish live relationships between attributes.
 Constants and attributes used in an expression must already have their intended
 values. Constants normally cannot be redefined.
@@ -176,7 +176,7 @@ lord/slave relationships. See **Superposition Fundamentals**, `c:super.fund` in
 [superposition.tex](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad/doc/superposition.tex).
 
 **Multipass** represents repeated traversal of the same physical hardware.
-Ordinary line repetition makes repeated elements; `line[multipass]` additionally
+Line repetition makes repeated elements; `line[multipass]` additionally
 ties corresponding passes to one physical lord. The official
 [multipass example](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad-doc/tutorial_bmad_tao/lattice_files/multipass.bmad)
 uses:

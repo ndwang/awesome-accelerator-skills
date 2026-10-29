@@ -142,7 +142,7 @@ parameters are described in [Optimization][optimization], `s:tao.opti`.
 ## What the merit function means
 
 Tao minimizes a weighted sum of squared data residuals and variable penalties.
-For the ordinary target fit above, the data residual is `model - meas`. A weight
+For the target fit above, the data residual is `model - meas`. A weight
 of `1 / tolerance**2` makes a one-tolerance deviation contribute one to the sum.
 Weights therefore also balance observables with different units.
 
@@ -173,9 +173,8 @@ expand_lattice
 call, file = fitted.out
 ```
 
-Alternatively, `write variable -tao_format fitted.tao` writes Tao commands that
-can be loaded with `call fitted.tao`. `write bmad model.bmad` exports the whole
-model. These choices preserve different amounts of the original file structure.
+See [export formats](commands-and-scripts.md#save-results) for Tao command
+files and complete model snapshots.
 
 ## Further details and examples
 

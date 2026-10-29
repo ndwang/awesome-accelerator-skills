@@ -13,18 +13,16 @@ metadata:
 
 **Bmad** is the accelerator physics library and lattice language. A Bmad lattice
 describes the particle and reference energy, beamline elements, their arrangement,
-and the physical models used for calculations. It can describe transport lines,
-storage rings, recirculating machines, and photon optics.
+and the physical models used for calculations.
 
 **Tao** is a user program built on Bmad. It loads lattices, calculates optics,
 tracks particles, plots results, and fits adjustable parameters to target data.
 Its initialization files establish a session; its commands inspect and change
 that session.
 
-**PyTao** exposes a Tao session to Python through the Tao shared library. Users
-can write Python analyses with it. An agent can also use an ordinary `Tao()`
-object to load a model, run Tao commands, and obtain calculated results while
-working on a Bmad or Tao task.
+**PyTao** exposes a Tao session to Python through the Tao shared library. A
+`Tao` object loads a model, runs commands, and returns calculated quantities
+for analysis and plotting.
 
 | File | What it describes |
 | --- | --- |
@@ -32,10 +30,6 @@ working on a Bmad or Tao task.
 | `tao.init` and related initialization files | Tao namelists: lattices to load, data, variables, beam and plot setup |
 | Tao command files, often `.tao` | Commands to execute in a Tao session, including aliases and parameterized scripts |
 | Python scripts or notebooks | PyTao calls, numerical analysis, automation, and Python plotting |
-
-A lattice-writing task primarily needs Bmad knowledge. A command or fitting task
-needs Tao knowledge. PyTao can supply the execution interface for either; the
-underlying physics and commands retain their Bmad and Tao meanings.
 
 ## Read for the task
 
@@ -53,7 +47,7 @@ directly to a topic reference when the task is already specific.
 | Prepare `tao.init`, load lattices, or configure universes | [Initialization](references/tao/initialization.md) |
 | Find commands or write a Tao script | [Commands and scripts](references/tao/commands-and-scripts.md) |
 | Define data and variables or fit optics | [Data and fitting](references/tao/data-and-fitting.md) |
-| Use the Python package or execute a model from an agent | [PyTao](references/pytao.md) |
+| Load, query, and analyze a model in Python | [PyTao](references/pytao.md) |
 
 ## Examples and detailed documentation
 
@@ -73,9 +67,9 @@ interfaces, use the documentation corresponding to the installed software.
   and [startup commands](assets/matching/setup.tao). The
   [fitting guide](references/tao/data-and-fitting.md) explains the data targets
   and adjustable quadrupole strengths. Keep these three files together.
-- **Python examples:** the [PyTao guide](references/pytao.md) points to the
-  package's own notebooks for basic use, element models, plotting, beam tracking,
-  and configuration.
+- **Python examples:** the [PyTao guide](references/pytao.md) uses the bundled
+  lattices for model access, fitting, and plotting, with upstream notebooks
+  as further reference.
 
 Official entry points: [Bmad manual](https://www.classe.cornell.edu/bmad/manual.html),
 [Tao](https://www.classe.cornell.edu/bmad/tao.html),

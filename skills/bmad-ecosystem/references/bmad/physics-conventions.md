@@ -37,7 +37,7 @@ in [phase-space.tex](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad/d
 
 ## Charged-particle phase space
 
-For ordinary tracking with longitudinal position `s` as the independent variable,
+For tracking with longitudinal position `s` as the independent variable,
 the six coordinates are
 
 \[
@@ -151,8 +151,10 @@ For a matched, uncoupled beam without a dispersion contribution, the horizontal
 rms size satisfies `sigma_x^2 = epsilon_x * beta_a`, where `epsilon_x` is the
 geometric emittance. A beta function alone therefore does not specify a beam size.
 
-For an open line, these quantities are propagated from entrance conditions.
-For a closed lattice, the periodic solution comes from the one-turn map.
+For an open line, the entrance orbit and optics propagate downstream. Entrance
+Twiss parameters are specified with `beginning[beta_a]`, `beginning[alpha_a]`,
+`beginning[beta_b]`, and `beginning[alpha_b]`. For a closed lattice, the periodic
+solution comes from the one-turn map.
 Selecting closed geometry does not guarantee a stable periodic solution or
 physical closure in floor coordinates.
 
@@ -165,6 +167,9 @@ identical to `deta_x_ds` and `deta_y_ds`.
 **Dispersion Calculation** (`s:dispersion`), and **Twiss Calculation**
 (`s:twiss.calc`) in
 [optics.tex](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad/doc/optics.tex).
+Entrance conditions and global lattice settings are defined in
+[param-statements.tex](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad/doc/param-statements.tex),
+`s:beginning` and `s:param`.
 
 ## Tracking and optics are different calculations
 

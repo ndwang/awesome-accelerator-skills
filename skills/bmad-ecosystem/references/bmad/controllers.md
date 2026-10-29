@@ -23,7 +23,7 @@ ov2: overlay = {q[k1]: 0.7, q[x_offset]: 0.1*hh}, var = {hh}, hh = 0.01
 Here `q` is a previously defined quadrupole. The overlay sets its `k1` to
 0.7 m^-2 and its `x_offset` to 0.001 m. Changing `ov2[hh]` changes the offset
 through the expression. `hh` is an actual adjustable controller variable;
-an ordinary lattice constant would only be substituted during parsing.
+a lattice constant would only be substituted during parsing.
 
 If several overlays control one attribute, their contributions are summed.
 The original value written on the slave is not an extra contribution.

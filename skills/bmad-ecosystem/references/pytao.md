@@ -1,14 +1,11 @@
 # PyTao: using Tao from Python
 
-PyTao gives Python access to Tao through its shared library. A `Tao` object
-loads the model, accepts the same commands as the Tao prompt, and returns
-calculated quantities as Python objects and arrays. This is also the usual
-interface for an agent that needs to run a lattice or inspect a calculation.
-The [Bmad guide](bmad.md) explains the physical model;
-the [Tao guide](tao.md) explains commands, initialization, and session state.
-
-The examples below follow PyTao's own documentation. Its full notebooks are
-linked beside each topic; they include the lattice setup and longer analyses.
+A `Tao` object loads a model, accepts Tao commands, and returns calculated
+quantities as Python objects and arrays. The examples use the bundled
+[beamline](../assets/beamline/lattice.bmad) and
+[matching setup](../assets/matching/tao.init). Run the snippets from the
+`bmad-ecosystem` skill directory; paths are relative to that directory.
+Upstream notebooks provide further examples and longer analyses.
 
 Contents: [session](#create-a-tao-session),
 [commands and results](#commands-and-calculated-results),
@@ -19,24 +16,17 @@ Contents: [session](#create-a-tao-session),
 
 ## Create a Tao session
 
-The official [PyTao Basics](https://bmad-sim.github.io/pytao/examples/basic/)
-notebook starts with the CESR example distributed with Bmad:
-
 ```python
+from pathlib import Path
 from pytao import Tao
 
-tao = Tao(
-    init_file="$ACC_ROOT_DIR/bmad-doc/tao_examples/cesr/tao.init",
-    noplot=True,
-)
+lattice_file = str(Path("assets/beamline/lattice.bmad").resolve())
+tao = Tao(lattice_file=lattice_file, noinit=True, noplot=True)
 ```
 
-`init_file` loads a Tao configuration, including its lattice and any data,
-variables, plots, and startup commands. The example path assumes an installed
-Bmad distribution with `ACC_ROOT_DIR` set. For a project, use its own
-`tao.init`. For a standalone lattice, use
-`Tao(lattice_file="lattice.bmad", noinit=True, noplot=True)`; `noinit=True`
-avoids loading a default initialization file.
+`lattice_file` selects the Bmad lattice, and `noinit=True` skips the default
+initialization file. A session with data, variables, and startup commands uses
+`init_file`; the [fitting example](#scans-and-fitting) below loads that setup.
 
 Tao startup options are exposed as constructor keywords. `noplot=True`
 suppresses the native plot window; Python plotting uses `plot="mpl"` or
@@ -52,15 +42,17 @@ both for changing the model and for inspecting the same output a user sees
 at the Tao prompt:
 
 ```python
-print("\n".join(tao.cmd("show lattice 1:10")))
-tao.cmd("set element Q00W x_offset = 1e-6")
-orbit = tao.ele_orbit("Q00W")
+print("\n".join(tao.cmd("show lattice")))
+before = tao.ele_twiss("END")
+tao.cmd("set element q k1 = 0.3")
+after = tao.ele_twiss("END")
+print(before["beta_a"], after["beta_a"])
 ```
 
-Here `Q00W` is an element in the CESR example; use the corresponding name or
-identifier in another lattice. Commands change the running Tao model. A later
-query on the same object sees that model; edits are not automatically written
-back into the original `.bmad` file. `cmds([...])` sends a sequence of commands.
+The beamline contains a quadrupole named `q`. Commands change the running model;
+subsequent queries return its calculated results. `cmds([...])` sends a sequence
+of commands. [Export commands](tao/commands-and-scripts.md#save-results) save
+model settings to files.
 
 PyTao provides several ways to retrieve results:
 
@@ -75,8 +67,6 @@ PyTao provides several ways to retrieve results:
 For example:
 
 ```python
-twiss = tao.ele_twiss("Q00W", which="model")
-beta_a = twiss["beta_a"]
 s = tao.lat_list("*", "ele.s")
 beta_a_along_lattice = tao.lat_list("*", "ele.a.beta")
 names = tao.lat_list("*", "ele.name")
@@ -88,15 +78,12 @@ can change the selected objects and ordering. Use the same selection when
 combining position and optics arrays. `evaluate` can return an array even
 when an expression selects a single value.
 
-The `a` and `b` labels are Bmad's transverse normal modes. They need not be
-horizontal and vertical modes in a coupled lattice. Element queries normally
-refer to the downstream end; selectors and lattice states follow
+Optics quantities follow [Bmad's conventions](bmad/physics-conventions.md#optics-and-dispersion).
+Element queries normally refer to the downstream end; selectors and lattice states follow
 [Tao's addressing rules](tao/commands-and-scripts.md#select-elements-and-configurations).
 
-The parsed methods use Tao's machine interface internally, so extracting
-values does not require splitting the columns of `show lattice`. Raw
-`cmd_real` and `cmd_integer` access numerical buffers populated by specific
-Tao commands; they are not general conversions of arbitrary text output.
+The parsed methods use Tao's machine interface internally. Raw `cmd_real` and
+`cmd_integer` access numerical buffers populated by specific Tao commands.
 The [Basics notebook](https://bmad-sim.github.io/pytao/examples/basic/)
 has sections on `lat_list`, method commands, and `pipe` internals. The
 [Tao API](https://bmad-sim.github.io/pytao/api/tao/) documents Python conveniences
@@ -112,7 +99,7 @@ information into an `Element` object. `tao.eles()` accepts a selection of
 elements, including ranges, wildcards, and element types:
 
 ```python
-ele = tao.ele("Q00W")
+ele = tao.ele("q")
 print(ele.name, ele.key, ele.twiss.beta_a)
 print(ele.attrs["K1"].data, ele.attrs["K1"].units)
 
@@ -121,9 +108,8 @@ quads = tao.eles("quad::*", defaults=False, twiss=True, attrs=True)
 
 The `.attrs` entries include values, units, and whether an attribute can be
 changed. `.attribs` is a convenience view of their values. These objects
-contain queried data; after a Tao command changes the model, query again for
-updated results. Assigning a field in a returned data object does not itself
-send a Tao command.
+contain snapshots of queried data. Apply model changes through Tao commands,
+then query again for updated results.
 
 For a large lattice, requesting just the needed fields avoids querying all
 available element information. The `Lattice` model collects `Element`
@@ -136,32 +122,34 @@ for the individual fields.
 ## Scans and fitting
 
 A Python scan changes a lattice attribute or Tao variable, queries an
-observable, and collects the results. The ordinary `Tao` object supports this
-directly. Tao's optimizer can also be driven with `cmd`/`cmds`, then queried
-through methods such as `merit`, `data`, and `var`.
+observable, and collects the results. Each point updates the current model;
+preserve the starting values for a temporary scan. Calculation switches and
+lattice states follow [Tao command semantics](tao/commands-and-scripts.md#change-the-working-lattice).
 
-Use the official [FODO optics notebook](https://bmad-sim.github.io/pytao/examples/fodo/)
-for a complete example. It covers symmetric and asymmetric quadrupole scans,
-fitting target beta functions, and subsequent beam tracking. Its initializer
-loads the FODO lattice together with the data and variables used by the fit;
-those names are specific to that setup. The [Tao fitting guide](tao/data-and-fitting.md)
-explains how to define equivalent objects for another model.
+The bundled matching setup defines the `twiss` targets and `quad` variables:
 
-Each scan point changes the current model. Preserve the starting values when
-the scan is intended to be temporary. Tao normally recalculates after changes;
-if calculations have been disabled globally or for a universe, queries can
-return existing results instead of newly calculated optics. An unstable ring
-can also fail to produce valid periodic optics. These are properties of the
-Tao model, not of the Python loop.
+```python
+matching_init = str(Path("assets/matching/tao.init").resolve())
+tao = Tao(init_file=matching_init, noplot=True)
+tao.cmds(["use data twiss", "use var quad", "run_optimizer lm"])
+print("\n".join(tao.cmd("show merit")))
+twiss = tao.ele_twiss("END")
+```
+
+The [fitting guide](tao/data-and-fitting.md) explains its targets, variable
+bounds, and merit function. The upstream
+[FODO optics notebook](https://bmad-sim.github.io/pytao/examples/fodo/)
+provides further examples of quadrupole scans, fitting, and beam tracking.
 
 ## Plotting
 
-PyTao can render Tao plot templates using Matplotlib or Bokeh. This example
-follows the official Matplotlib notebook:
+PyTao renders Tao plot templates using Matplotlib or Bokeh. For the bundled
+beamline:
 
 ```python
 tao = Tao(
-    init_file="$ACC_ROOT_DIR/bmad-doc/tao_examples/optics_matching/tao.init",
+    lattice_file=lattice_file,
+    noinit=True,
     plot="mpl",
 )
 tao.plot("beta", save="beta.png", include_layout=False)
@@ -169,8 +157,8 @@ tao.plot("beta", save="beta.png", include_layout=False)
 
 Templates such as `beta`, `dispersion`, `orbit`, and `floor_plan` define what
 to plot. PyTao supplies the Python rendering and options for layout and
-appearance. Arrays from `lat_list` can also be plotted directly with ordinary
-Python plotting tools.
+appearance. Arrays from `lat_list` can also be plotted directly with Python
+plotting tools.
 
 Use the [Matplotlib notebook](https://bmad-sim.github.io/pytao/examples/plot-matplotlib/)
 for stacked plots, fields, figure customization, and saving figures, or the
@@ -181,16 +169,9 @@ may need a version without those commands when using Python plotting; see
 
 ## Beam tracking and particles
 
-Beam tracking requires a particle distribution and beam settings in Tao.
-`track_beam()` runs that calculation; it does not infer the bunch properties
-from the lattice's reference particle. With a configured beam:
-
-```python
-tao.track_beam(use_progress_bar=False)
-stats = tao.bunch_params("END")
-x = tao.bunch1("END", "x")
-particles = tao.particles("END")
-```
+[Beam initialization](tao/initialization.md#beam-initialization) defines the
+particle distribution and saved locations. For a configured session,
+`tao.track_beam(use_progress_bar=False)` runs the bunch calculation.
 
 `bunch_params` supplies statistics, while `bunch1` supplies individual particle
 coordinates in Bmad's convention. Full particle access requires the beam to
@@ -231,14 +212,15 @@ describes individual settings models.
 ## Independent sessions and diagnostics
 
 There is one native Tao state per Python process. Constructing another `Tao`
-object reinitializes that state; two Python variables do not provide two
-independent models. Use `SubprocessTao` when independent simultaneous sessions
-are needed:
+object reinitializes that state. `SubprocessTao` runs an independent session
+in its own process:
 
 ```python
 from pytao import SubprocessTao
 
-with SubprocessTao(init_file="other_model/tao.init", noplot=True) as other:
+with SubprocessTao(
+    init_file=str(Path("assets/matching/tao.init").resolve()), noplot=True
+) as other:
     optics = other.ele_twiss("END")
 ```
 
@@ -247,8 +229,8 @@ The context manager closes the process on exit. See
 for lifetime management.
 
 Tao errors normally raise Python exceptions. Their messages retain the Tao
-diagnostic. `raises=False` is available for inspecting raw error output, but
-does not make a failed calculation valid. The usage guide also documents
+diagnostic. `raises=False` returns raw error output for inspection. The usage
+guide also documents
 [Python logging](https://bmad-sim.github.io/pytao/usage/#logging).
 Avoid `quiet=True` as a general logging control: the upstream usage guide
 notes that it can interfere with PyTao behavior.
