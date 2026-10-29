@@ -31,9 +31,9 @@ initialization file. A session with data, variables, and startup commands uses
 Tao startup options are exposed as constructor keywords. `noplot=True`
 suppresses the native plot window; Python plotting uses `plot="mpl"` or
 `plot="bokeh"` instead. PyTao needs a working Tao shared library in addition
-to the Python package. See [installation](https://bmad-sim.github.io/pytao/installation/)
-for library discovery and [usage](https://bmad-sim.github.io/pytao/usage/)
-for startup options and notebook integration.
+to the Python package. See [installation](installation.md) for package setup
+and library discovery, and [usage](https://bmad-sim.github.io/pytao/usage/) for
+startup options and notebook integration.
 
 ## Commands and calculated results
 

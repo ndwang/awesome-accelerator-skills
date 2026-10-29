@@ -48,7 +48,7 @@ claude --plugin-dir /path/to/awesome-accelerator-skills
 
 Running the examples requires Tao; Python execution also requires PyTao and
 the Tao shared library. See
-[PyTao installation](https://bmad-sim.github.io/pytao/installation/).
+[Bmad and PyTao installation](skills/bmad-ecosystem/references/installation.md).
 
 ## Example requests
 
@@ -70,5 +70,4 @@ agentskills validate skills/bmad-ecosystem
 ## License
 
 Original repository content is licensed under [GPL-3.0-only](LICENSE), as is
-the standalone skill. Bundled upstream examples retain their notices and
-[attribution](skills/bmad-ecosystem/ATTRIBUTION.md).
+the standalone skill.
