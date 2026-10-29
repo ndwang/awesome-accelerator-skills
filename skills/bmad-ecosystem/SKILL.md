@@ -75,4 +75,4 @@ Official entry points: [Bmad manual](https://www.classe.cornell.edu/bmad/manual.
 [Tao](https://www.classe.cornell.edu/bmad/tao.html),
 [Bmad/Tao tutorial examples](https://github.com/bmad-sim/bmad-ecosystem/tree/main/bmad-doc),
 and [PyTao documentation](https://bmad-sim.github.io/pytao/).
-Copied examples and source revisions are recorded in [ATTRIBUTION.md](ATTRIBUTION.md).
+Authorship and licensing are described in [ATTRIBUTION.md](ATTRIBUTION.md).

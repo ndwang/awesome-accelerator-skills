@@ -24,8 +24,7 @@ The package includes the official Bmad/Tao tutorial's
 [introductory lattice](skills/bmad-ecosystem/assets/beamline/lattice.bmad)
 and [optics fitting example](skills/bmad-ecosystem/assets/matching/tao.init).
 Other curated examples are linked beside their relevant topics, including
-PyTao's own notebooks. See
-[ATTRIBUTION.md](skills/bmad-ecosystem/ATTRIBUTION.md) for copied files and sources.
+PyTao's own notebooks.
 
 ## Install
 
