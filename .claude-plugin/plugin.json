@@ -1,7 +1,7 @@
 {
-  "name": "awesome-accelerator-skills",
-  "description": "Skills for Bmad accelerator simulation toolkit and Tao program. Enables AI agents to write, read, and understand Bmad lattice files, accelerator physics conventions, and Tao commands.",
-  "version": "1.0.0",
+  "name": "bmad-ecosystem-skill",
+  "description": "Bmad lattice and physics knowledge, Tao initialization and commands, and PyTao model access for accelerator modeling.",
+  "version": "2.0.0",
   "author": {
     "name": "Ningdong Wang"
   }
