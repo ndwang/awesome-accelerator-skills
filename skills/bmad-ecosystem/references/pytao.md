@@ -17,11 +17,13 @@ Contents: [session](#create-a-tao-session),
 ## Create a Tao session
 
 ```python
-from pathlib import Path
 from pytao import Tao
 
-lattice_file = str(Path("assets/beamline/lattice.bmad").resolve())
-tao = Tao(lattice_file=lattice_file, noinit=True, noplot=True)
+tao = Tao(
+    lattice_file="assets/beamline/lattice.bmad",
+    noinit=True,
+    noplot=True,
+)
 ```
 
 `lattice_file` selects the Bmad lattice, and `noinit=True` skips the default
@@ -129,8 +131,7 @@ lattice states follow [Tao command semantics](tao/commands-and-scripts.md#change
 The bundled matching setup defines the `twiss` targets and `quad` variables:
 
 ```python
-matching_init = str(Path("assets/matching/tao.init").resolve())
-tao = Tao(init_file=matching_init, noplot=True)
+tao = Tao(init_file="assets/matching/tao.init", noplot=True)
 tao.cmds(["use data twiss", "use var quad", "run_optimizer lm"])
 print("\n".join(tao.cmd("show merit")))
 twiss = tao.ele_twiss("END")
@@ -148,7 +149,7 @@ beamline:
 
 ```python
 tao = Tao(
-    lattice_file=lattice_file,
+    lattice_file="assets/beamline/lattice.bmad",
     noinit=True,
     plot="mpl",
 )
@@ -219,7 +220,7 @@ in its own process:
 from pytao import SubprocessTao
 
 with SubprocessTao(
-    init_file=str(Path("assets/matching/tao.init").resolve()), noplot=True
+    init_file="assets/matching/tao.init", noplot=True
 ) as other:
     optics = other.ele_twiss("END")
 ```

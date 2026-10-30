@@ -51,10 +51,13 @@ Variable” (`s:var.anatomy`).
 
 ## Read a complete matching example
 
-The bundled [matching example](../../assets/matching/tao.init) comes from the
-official [lattice-optimization tutorial][example]. Its [lattice](../../assets/matching/lat.bmad)
-has six quadrupoles in an open line. The entrance beta functions are 10 m; the
-fit targets beta = 12 m and alpha = -0.4 for both transverse modes at `END`.
+The bundled [matching example](../../assets/matching/tao.init) uses a
+[lattice](../../assets/matching/lat.bmad) with six quadrupoles in an open line.
+The entrance beta functions are 10 m; the fit targets beta = 12 m and
+alpha = -0.4 for both transverse modes at `END`.
+
+Keep `tao.init`, `lat.bmad`, and the [startup commands](../../assets/matching/setup.tao)
+together in the same directory.
 
 The data definitions begin with the group:
 
@@ -196,6 +199,5 @@ extensive target, limit, and plotting configuration.
 [optimization]: https://github.com/bmad-sim/bmad-ecosystem/blob/main/tao/doc/optimization.tex
 [init]: https://github.com/bmad-sim/bmad-ecosystem/blob/main/tao/doc/initialization.tex
 [commands]: https://github.com/bmad-sim/bmad-ecosystem/blob/main/tao/doc/command-list.tex
-[example]: https://github.com/bmad-sim/bmad-ecosystem/tree/main/bmad-doc/tutorial_bmad_tao/lattice_files/lattice_optimization
 [correction]: https://github.com/bmad-sim/bmad-ecosystem/tree/main/bmad-doc/tutorial_bmad_tao/lattice_files/twiss_correction
 [matching]: https://github.com/bmad-sim/bmad-ecosystem/tree/main/bmad-doc/tao_examples/optics_matching

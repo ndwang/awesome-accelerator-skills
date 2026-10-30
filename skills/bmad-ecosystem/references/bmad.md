@@ -27,9 +27,8 @@ labels `s:element.def`, `s:branch.def`, `s:lattice.def`, and `s:lord.slave`).
 
 ## Read a small lattice
 
-The bundled [lattice](../assets/beamline/lattice.bmad) comes from the official
-[`simple.bmad` tutorial](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad-doc/tutorial_bmad_tao/lattice_files/simple.bmad).
-Its essential statements are:
+The bundled [lattice](../assets/beamline/lattice.bmad) describes a small open
+beamline. Its essential statements are:
 
 ```bmad
 beginning[beta_a] = 10.
@@ -70,6 +69,5 @@ cover reference quantities, geometry, coordinates, and optics.
 | Native applications | Call Bmad from a program through its lattice, element, and particle structures. Start with [programming.tex](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad/doc/programming.tex) and the official [example program](https://github.com/bmad-sim/bmad-ecosystem/blob/main/bmad/doc/example-program.tex). |
 
 The [Bmad manual](https://www.classe.cornell.edu/bmad/manual.html) is the full
-reference. The [Bmad/Tao tutorial examples](https://github.com/bmad-sim/bmad-ecosystem/tree/main/bmad-doc/tutorial_bmad_tao/lattice_files)
-are useful starting points for particular features. Source links above name the
-chapter and, where useful, its TeX label so a large file can be searched directly.
+reference. Source links above name the chapter and, where useful, its TeX label
+so a large file can be searched directly.

@@ -8,18 +8,17 @@ installation can also supply Tao and its shared library.
 ## Prebuilt packages with conda-forge
 
 Use a Linux or macOS shell with [Miniforge](https://conda-forge.org/download/).
-On Windows, run Linux and its conda installation inside WSL2. Create an environment
-containing the native libraries, executable, and Python interface:
+On Windows, run Linux and its conda installation inside WSL2. Install the native
+libraries, executable, and Python interface:
 
 ```bash
-conda create -n bmad --override-channels -c conda-forge python bmad pytao
-conda activate bmad
+conda install -c conda-forge bmad pytao
 ```
 
-Activate this environment in each shell used for Tao or Python. Keep this runtime
-separate from a source-build environment: sourcing `util/dist_source_me` while
-using the prebuilt packages can introduce conflicting library paths. On macOS,
-native Tao plotting requires XQuartz; the verification below uses `-noplot`.
+Keep this runtime separate from a source-build environment: sourcing
+`util/dist_source_me` while using the prebuilt packages can introduce conflicting
+library paths. On macOS, native Tao plotting requires XQuartz; the verification
+below uses `-noplot`.
 
 See the [Bmad installation guide](https://wiki.classe.cornell.edu/ACC/ACL/OffsiteDoc)
 for platform setup and conda options, and
@@ -82,14 +81,7 @@ library must use compatible architectures and runtime dependencies.
 ## Verify with the bundled beamline
 
 Run these checks from the `bmad-ecosystem` skill directory with the selected
-environment active. First load the bundled lattice in Tao:
-
-```bash
-tao -lat assets/beamline/lattice.bmad -noinit -noplot
-```
-
-At the Tao prompt, use `show lattice` to inspect the beamline and `exit` to quit.
-Then run this Python code in the same environment:
+environment active. For a Python check, use PyTao:
 
 ```python
 from pytao import Tao
@@ -104,6 +96,17 @@ print(tao.ele_twiss("END"))
 
 The Python check exercises library loading, lattice parsing, and an optics
 query. The [PyTao guide](pytao.md) continues with model changes and plotting.
+
+For a standalone Tao check, use an interactive terminal session when the
+available tools support sending commands to a running process:
+
+```bash
+tao -lat assets/beamline/lattice.bmad -noinit -noplot
+```
+
+This command opens a Tao prompt and keeps running until `exit`. `-noplot`
+disables plotting. Enter `show lattice` to inspect the beamline, then `exit` to
+return to the shell.
 
 | Symptom | Check |
 | --- | --- |
