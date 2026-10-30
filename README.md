@@ -1,3 +1,5 @@
+![Bmad Ecosystem Skill — beam focusing illustration](cover.png)
+
 # Bmad Ecosystem Skill
 
 An agent skill for accelerator modeling with
