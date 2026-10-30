@@ -3,6 +3,11 @@
 `tao.init` describes the lattices, data, variables, plots, and particle bunches
 that initialize a Tao session.
 
+Contents: [small initialization file](#a-small-initialization-file),
+[namelist syntax](#namelist-syntax), [blocks](#what-goes-in-each-block),
+[universes](#multiple-universes), [beam initialization](#beam-initialization),
+and [further details](#further-details).
+
 ## A small initialization file
 
 Put this `tao.init` beside a Bmad file named `lattice.bmad`:

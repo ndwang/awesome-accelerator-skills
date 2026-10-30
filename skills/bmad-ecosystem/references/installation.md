@@ -5,6 +5,11 @@ library used by PyTao. Choose a conda-forge environment for prebuilt packages,
 or a source build for development and custom build settings. A facility-provided
 installation can also supply Tao and its shared library.
 
+Contents: [conda-forge](#prebuilt-packages-with-conda-forge),
+[source builds](#build-bmad-and-tao-from-source),
+[PyTao with an existing Bmad installation](#add-pytao-to-an-existing-bmad-installation),
+and [verification](#verify-with-the-bundled-beamline).
+
 ## Prebuilt packages with conda-forge
 
 Use a Linux or macOS shell with [Miniforge](https://conda-forge.org/download/).

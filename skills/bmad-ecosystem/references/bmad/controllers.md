@@ -9,6 +9,12 @@ A **lord** is an element that controls attributes of other elements, its
 split for tracking or traversed multiple times. A lord can therefore exist
 outside the ordered sequence of tracking elements.
 
+Contents: [overlays](#overlay-define-attributes-from-a-knob),
+[groups](#group-apply-a-change-to-existing-settings),
+[girders](#girder-align-elements-as-a-supported-assembly),
+[physical lords](#physical-lords-from-superposition-and-multipass),
+and [Tao variables](#bmad-controllers-and-tao-variables).
+
 ## Overlay: define attributes from a knob
 
 An `overlay` defines the values of slave attributes as functions of its

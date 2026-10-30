@@ -5,6 +5,12 @@ be entered at the prompt, read from a command file, or sent with
 `tao.cmd("...")` through [PyTao](../pytao.md). `help set element`, for example,
 shows the installed program's syntax for that operation.
 
+Contents: [inspection](#inspect-a-model),
+[selection](#select-elements-and-configurations),
+[model changes](#change-the-working-lattice),
+[scripts and aliases](#write-a-command-file-or-alias),
+[plotting and tracking](#plot-and-track), and [export](#save-results).
+
 ## Inspect a model
 
 These commands apply to the bundled [simple lattice](../../assets/beamline/lattice.bmad),

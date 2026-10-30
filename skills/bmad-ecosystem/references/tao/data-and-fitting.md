@@ -6,6 +6,14 @@ be beta and alpha at the beamline end, and the variables might be quadrupole
 strengths. For orbit correction, the data might be BPM positions and the
 variables steering kicks.
 
+Contents: [data](#data-are-named-observables),
+[variables](#variables-connect-the-optimizer-to-lattice-attributes),
+[matching example](#read-a-complete-matching-example),
+[running a fit](#run-and-examine-the-fit),
+[merit function](#what-the-merit-function-means),
+[saving settings](#save-fitted-settings),
+and [further details](#further-details-and-examples).
+
 ## Data are named observables
 
 A **datum** specifies a calculation, its location, and how it participates in
