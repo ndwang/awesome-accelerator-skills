@@ -1,6 +1,6 @@
 ---
 name: bmad-ecosystem
-description: Install Bmad, Tao, and PyTao, write and understand Bmad accelerator lattices, prepare Tao initialization files and command scripts, and use PyTao from Python. Use for Bmad physics conventions and element definitions, Tao optics/tracking/fitting tasks, and Python access to a Tao model.
+description: Use when installing or working with Bmad, Tao, or PyTao for accelerator modeling. Covers lattice syntax, element definitions and physics conventions, Tao initialization and commands, optics calculations, particle tracking, fitting, and Python model access and analysis.
 license: GPL-3.0-only
 metadata:
   author: Ningdong Wang
