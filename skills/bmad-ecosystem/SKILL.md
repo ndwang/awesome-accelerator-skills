@@ -23,10 +23,10 @@ that session.
 `Tao` object loads a model, runs commands, and returns calculated quantities
 for analysis and plotting.
 
-Standalone Tao opens an interactive prompt and runs until `exit`. Use an
-interactive terminal session when the available tools support sending commands
-to a running process. PyTao provides scripted access from Python. `-noplot`
-disables plotting.
+Standalone Tao normally opens a prompt that remains active until `exit`.
+Use an interactive session when terminal tools support sending commands to a
+running process. For shell automation, [supply a command sequence](references/tao/initialization.md#start-a-session)
+ending in `exit`.
 
 | File | What it describes |
 | --- | --- |

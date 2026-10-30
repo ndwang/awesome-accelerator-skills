@@ -128,11 +128,12 @@ observable, and collects the results. Each point updates the current model;
 preserve the starting values for a temporary scan. Calculation switches and
 lattice states follow [Tao command semantics](tao/commands-and-scripts.md#change-the-working-lattice).
 
-The bundled matching setup defines the `twiss` targets and `quad` variables:
+The bundled matching setup defines the `twiss` targets and `quad` variables;
+its startup file selects them for fitting:
 
 ```python
 tao = Tao(init_file="assets/matching/tao.init", noplot=True)
-tao.cmds(["use data twiss", "use var quad", "run_optimizer lm"])
+tao.cmd("run_optimizer lm")
 print("\n".join(tao.cmd("show merit")))
 twiss = tao.ele_twiss("END")
 ```

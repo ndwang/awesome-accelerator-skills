@@ -35,15 +35,21 @@ optimization settings.
 Official definitions: [Organization and Structure][organization], especially
 `s:super.uni`, `s:universe`, and `s:lattice`.
 
-Session files are described in [initialization](tao/initialization.md).
-[Commands and scripts](tao/commands-and-scripts.md) cover inspection, model
-changes, plotting, tracking, and export. [PyTao](pytao.md) provides Python access.
+## Work with a session
+
+[Load a lattice or initialize a session](tao/initialization.md), then use
+[commands](tao/commands-and-scripts.md) to inspect calculated optics, change
+attributes, plot results, or track particles. Changes apply to the working
+model. Keep a comparison point in the base lattice and save settings or a
+lattice snapshot when they should be reused in another session.
+
+For matching or correction, [define data and variables](tao/data-and-fitting.md),
+select the observables and controls for the task, and run an optimizer. Inspect
+the residuals and final settings before accepting the fit. Use [PyTao](pytao.md)
+when the workflow needs Python analysis or structured numerical results.
 
 Tao also provides dynamic-aperture calculations, normal-form analysis, radiation
-quantities, and wave analysis for diagnosing optical errors. These capabilities
-have their own settings and data types. Use the [Tao manual][manual] and the
-topic-specific [official examples][examples] when extending beyond the common
-tasks above.
+quantities, and wave analysis for diagnosing optical errors.
 
 ## Official examples and reference
 

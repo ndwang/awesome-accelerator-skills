@@ -13,8 +13,9 @@ Contents: [inspection](#inspect-a-model),
 
 ## Inspect a model
 
-These commands apply to the bundled [simple lattice](../../assets/beamline/lattice.bmad),
-which has a quadrupole named `q`:
+`show lattice` lists elements and calculated quantities, `show element`
+inspects one element, and `show value` evaluates an expression. For a lattice
+with a quadrupole named `q`:
 
 ```text
 show lattice
@@ -24,10 +25,9 @@ show value lat::beta.a[END]
 show value ele::q[k1]
 ```
 
-`show lattice` prints a table, `show element` describes one element, and
-`show value` evaluates an expression. Lattice-table quantities normally refer to
-element exits; `-beginning` and `-middle` select other locations. `-design` and
-`-base` select the reference states instead of the model.
+Lattice-table quantities normally refer to element exits; `-beginning` and
+`-middle` select other locations. `-design` and `-base` select the reference
+states instead of the model.
 
 The expression prefixes identify what is being accessed:
 
@@ -39,7 +39,9 @@ The expression prefixes identify what is being accessed:
 | `data::twiss.a[1]\|model` | The calculated value of a defined Tao datum |
 | `var::quad[1]\|model` | The current value of a defined Tao variable |
 
-The last two names exist in the [matching example](../../assets/matching/tao.init).
+Use element, data, and variable names from the loaded model. The bundled
+[beamline](../../assets/beamline/lattice.bmad) supplies `q`; the
+[matching session](../../assets/matching/tao.init) supplies `twiss` and `quad`.
 Tao data names use forms such as `beta.a`; Bmad attributes use forms such as
 `beta_a`. These are different naming conventions for related quantities.
 
@@ -72,15 +74,17 @@ Source: [Syntax][syntax], `s:ele.name` and `s:ele.list.format`.
 
 ## Change the working lattice
 
+Use `set` to assign an absolute value and the unprefixed `change` form to add
+an increment. These commands update the model lattice in the current session:
+
 ```text
 set element q k1 = 0.3
 change element q k1 0.01
 show element q
 ```
 
-`set` assigns an absolute value; the unprefixed `change` form adds an increment.
-These examples leave `q[k1]` at `0.31` in the model lattice. Commands do not edit
-the source `.bmad` file.
+Here `q[k1]` becomes `0.31`. The source `.bmad` file retains its original
+settings; use [export commands](#save-results) to save the modified model.
 
 The base lattice can hold a comparison point:
 
@@ -129,8 +133,8 @@ alias inspect_quad show element [[1]]; show lattice
 inspect_quad q
 ```
 
-The official [FODO `SetBetas.tao` example][alias-example] shows a more useful
-parameterized alias: it selects fit data and variables, sets two beta targets,
+The [FODO `SetBetas.tao` example][alias-example] demonstrates a parameterized
+fitting alias: it selects fit data and variables, sets two beta targets,
 runs the optimizer, and prints the resulting magnet settings.
 
 Command files also support integer loops:
@@ -159,8 +163,9 @@ scale r13 0 30
 x_scale r13 0 2
 ```
 
-This requires Tao's native plotting to be enabled. For Python-managed Matplotlib
-or Bokeh figures, use [PyTao plotting](../pytao.md#plotting) instead.
+These commands use Tao's native plotting, which the startup option `-noplot`
+disables. For Python-managed Matplotlib or Bokeh figures, use
+[PyTao plotting](../pytao.md#plotting).
 
 Single-particle calculations and bunch tracking use different tracking modes.
 For a session with a configured bunch, `set global track_type = beam` enables

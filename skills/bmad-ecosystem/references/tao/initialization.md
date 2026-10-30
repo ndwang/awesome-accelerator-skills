@@ -1,33 +1,47 @@
 # Tao initialization
 
-`tao.init` describes the lattices, data, variables, plots, and particle bunches
-that initialize a Tao session.
+A session combines a Bmad lattice with the data, variables, plots, and particle
+bunches needed for a calculation. Load a lattice directly for simple inspection,
+or describe a reusable session in `tao.init` and related initialization files.
 
-Contents: [small initialization file](#a-small-initialization-file),
-[namelist syntax](#namelist-syntax), [blocks](#what-goes-in-each-block),
-[universes](#multiple-universes), [beam initialization](#beam-initialization),
-and [further details](#further-details).
+Contents: [starting a session](#start-a-session),
+[namelist syntax](#namelist-syntax), [blocks and files](#what-goes-in-each-block),
+[startup commands](#run-startup-commands), [universes](#multiple-universes),
+[beam initialization](#beam-initialization), and [further details](#further-details).
 
-## A small initialization file
+## Start a session
 
-Put this `tao.init` beside a Bmad file named `lattice.bmad`:
+To inspect a lattice using Tao's default session settings:
 
-```fortran
-&tao_design_lattice
-  n_universes = 1
-  design_lattice(1)%file = "lattice.bmad"
-/
+```sh
+tao -lat lattice.bmad -noinit -noplot
 ```
 
-Start it with:
+To load a configured session:
 
 ```sh
 tao -init_file tao.init -noplot
 ```
 
-The same session can be opened with `Tao(init_file="tao.init", noplot=True)` in
-[PyTao](../pytao.md). An initialization file is useful as soon as the session needs
-more than a lattice. For a lattice alone, `tao -lat lattice.bmad -noinit` is enough.
+Substitute the paths for the model being used. `-noinit` skips the default
+initialization file; `-init_file` chooses a particular initialization file.
+`-noplot` suppresses native plotting windows. With an interactive terminal,
+enter commands at the Tao prompt and finish with `exit`.
+
+For a shell script, supply a command sequence ending in `exit`:
+
+```sh
+tao -init_file tao.init -noplot -command "show lattice; exit"
+```
+
+`-command` executes after startup-file commands. Semicolons separate the commands
+inside the quoted argument. For longer workflows, call a
+[command file](commands-and-scripts.md#write-a-command-file-or-alias) from that
+sequence. [PyTao](../pytao.md) opens the same session with
+`Tao(init_file="tao.init", noplot=True)` and provides Python access to its results.
+
+Source: [Initialization][init], “Tao Initialization Command Line Arguments”
+(`s:command.line`).
 
 ## Namelist syntax
 
@@ -46,6 +60,18 @@ Source: [Initialization][init], “Namelist Syntax” (`s:format`).
 
 ## What goes in each block
 
+Select the lattice in a `tao_design_lattice` block. For example, a `tao.init`
+beside `lattice.bmad` can contain:
+
+```fortran
+&tao_design_lattice
+  n_universes = 1
+  design_lattice(1)%file = "lattice.bmad"
+/
+```
+
+Add initialization blocks according to the calculation:
+
 | Namelist | Purpose |
 | --- | --- |
 | `tao_start` | Locate other initialization files and startup command files |
@@ -58,7 +84,7 @@ Source: [Initialization][init], “Namelist Syntax” (`s:format`).
 | `tao_template_plot`, `tao_template_graph` | Define custom plots and their graphs/curves |
 
 A small project can keep these blocks in `tao.init`. Larger projects can separate
-them by role:
+them by role and use `tao_start` to locate them:
 
 ```fortran
 &tao_start
@@ -67,23 +93,13 @@ them by role:
   plot_file = "plots.init"
   startup_file = "setup.tao"
 /
-
-&tao_design_lattice
-  design_lattice(1)%file = "lattice.bmad"
-/
 ```
 
 Without an explicit `data_file`, `var_file`, `beam_file`, or `plot_file`, Tao
-looks for those namelists in the root initialization file. `startup_file`
-names executable Tao commands, not namelists; the default name is `tao.startup`.
-For example, the bundled [matching setup](../../assets/matching/tao.init) uses
-`setup.tao` to define an optimizer alias.
-
-Paths specified inside the root initialization file are relative to its
-directory. Paths passed on the command line are relative to the process working
-directory, and command-line selections take precedence. `-nostartup` skips
-startup commands; `-noplot` suppresses the native window but does not itself
-remove commands from a startup file.
+looks for those namelists in the root initialization file. Paths specified in
+that file are relative to its directory. Paths passed on the command line are
+relative to the process working directory, and command-line selections take
+precedence.
 
 One naming trap: `-lattice_file` on the command line selects a physical lattice.
 The `lattice_file` field in `tao_start` selects the file containing the
@@ -92,9 +108,37 @@ The `lattice_file` field in `tao_start` selects the file containing the
 Source: [Initialization][init], “Beginning Initialization” (`s:init.begin`) and
 “Lattice Initialization” (`s:init.lat`).
 
+## Run startup commands
+
+A startup file runs Tao commands after the lattice, data, and variables have
+been initialized. Use it to establish the initial working state: select data
+and controls for a fit, set calculation options, or define reusable aliases.
+The `startup_file` setting above names `setup.tao`; the default name is
+`tao.startup`.
+
+For a session with data named `twiss` and variables named `quad`, a startup
+file can select them for fitting:
+
+```text
+use data twiss
+use var quad
+```
+
+Choose the names for the model and task. The `use` commands set the active
+selection; [data and fitting](data-and-fitting.md#select-the-fit) explains how
+selection affects optimization. The bundled [matching session](../../assets/matching/tao.init)
+uses [setup.tao](../../assets/matching/setup.tao) for this purpose.
+
+Use `-startup_file` to choose another command file, or `-nostartup` to skip
+startup commands. With `-noplot`, startup commands still execute while native
+plotting is disabled. Command-file syntax and aliases are described in
+[commands and scripts](commands-and-scripts.md#write-a-command-file-or-alias).
+
 ## Multiple universes
 
-The official [multiple-universes example][universes] loads two configurations:
+Use multiple universes to represent different machine configurations or
+measurement conditions within one session. Set `n_universes` and specify the
+lattice loaded by each universe:
 
 ```fortran
 &tao_design_lattice
@@ -108,12 +152,12 @@ Each universe has its own data and model/design/base lattices. A Tao variable
 can link the same adjustable attribute across universes, which is useful when
 fitting several measurement conditions with one set of magnet parameters.
 See [Tao concepts](../tao.md) and [data and fitting](data-and-fitting.md).
+The [multiple-universes example][universes] supplies a complete configuration.
 
 ## Beam initialization
 
-Lattice optics and a tracked particle distribution are different objects.
-`tao_beam_init` specifies the latter. The official
-[beam-tracking example][beam] includes settings such as:
+Define the particle distribution and saved locations in `tao_beam_init` when
+using bunch tracking. For example:
 
 ```fortran
 &tao_beam_init
@@ -131,8 +175,13 @@ The emittances here are normalized, `bunch_charge` is in coulombs, `sig_pz` is
 the spread in Bmad's relative momentum coordinate, and `sig_z` is in meters.
 `saved_at` chooses locations whose particle coordinates remain available after
 tracking; `"*"` saves at every element and can be expensive for a large model.
-Use the full upstream example for its lattice, plot definitions, and command
-files. Distribution choices and coordinate meanings are defined in the manual.
+Distribution choices are defined in the manual's `s:beam.init` section;
+[Bmad conventions](../bmad/physics-conventions.md#charged-particle-phase-space)
+define the coordinates. Use the [tracking commands](commands-and-scripts.md#plot-and-track)
+to select bunch tracking after the session is configured.
+
+The [beam-tracking example][beam] combines a lattice, beam initialization,
+plot definitions, and command files.
 
 ## Further details
 
