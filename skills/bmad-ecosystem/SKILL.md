@@ -4,7 +4,6 @@ description: Use when installing or working with Bmad, Tao, or PyTao for acceler
 license: GPL-3.0-only
 metadata:
   author: Ningdong Wang
-  version: "2.0.0"
 ---
 
 # Bmad, Tao, and PyTao
